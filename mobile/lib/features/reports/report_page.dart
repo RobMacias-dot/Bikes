@@ -84,7 +84,8 @@ class ReportPage extends StatelessWidget {
                   .toList()),
           const SizedBox(height: 12),
           FilledButton.icon(
-              onPressed: () => Share.share(summary),
+              onPressed: () =>
+                  SharePlus.instance.share(ShareParams(text: summary)),
               icon: const Icon(Icons.ios_share),
               label: const Text('Compartir resumen')),
           OutlinedButton.icon(
