@@ -1,0 +1,1002 @@
+{
+  "kind": "repairs",
+  "schemaVersion": 2,
+  "contentVersion": "1.0.0",
+  "status": "development",
+  "technicalVersion": "1.0.0",
+  "locale": "es-MX",
+  "sources": [],
+  "synonyms": [
+    [
+      "llanta",
+      "neumático",
+      "cubierta"
+    ],
+    [
+      "ponchadura",
+      "pinchazo",
+      "pinchada"
+    ],
+    [
+      "brinca",
+      "salta",
+      "salto"
+    ],
+    [
+      "chueca",
+      "descentrada"
+    ],
+    [
+      "pierde aire",
+      "desinfla"
+    ],
+    [
+      "flojo",
+      "suelto"
+    ],
+    [
+      "cambio",
+      "cambios",
+      "marcha"
+    ],
+    [
+      "no frena",
+      "freno no aprieta",
+      "freno débil"
+    ]
+  ],
+  "procedures": [
+    {
+      "id": "dev.chain",
+      "title": "[PRUEBA] La cadena brinca al pedalear",
+      "problem": "Simulación de interfaz. No es una guía mecánica. No realices acciones sobre una bicicleta.",
+      "category": "drivetrain",
+      "terms": [
+        "cadena salta bajo carga",
+        "cadena se sale",
+        "cambio no entra"
+      ],
+      "bikeTypes": [],
+      "contexts": [
+        "route",
+        "workshop"
+      ],
+      "tools": [
+        "Ninguna: simulación de software"
+      ],
+      "difficulty": "basic",
+      "sourceIds": [],
+      "specificationIds": [],
+      "entry": "safety",
+      "nodes": [
+        {
+          "id": "safety",
+          "kind": "safetyCheck",
+          "text": "SIMULACIÓN: elige una condición para probar el bloqueo de seguridad.",
+          "choices": [
+            {
+              "id": "clear",
+              "label": "En esta prueba no hay banderas rojas",
+              "next": "identify"
+            },
+            {
+              "id": "structure",
+              "label": "Simular daño estructural",
+              "next": "stop",
+              "hardStop": "structural_damage"
+            },
+            {
+              "id": "braking",
+              "label": "Simular pérdida de frenado",
+              "next": "stop",
+              "hardStop": "braking_loss"
+            },
+            {
+              "id": "steering",
+              "label": "Simular daño de dirección",
+              "next": "stop",
+              "hardStop": "steering_damage"
+            },
+            {
+              "id": "critical",
+              "label": "Simular pieza crítica rota",
+              "next": "stop",
+              "hardStop": "critical_part_broken"
+            }
+          ]
+        },
+        {
+          "id": "identify",
+          "kind": "identify",
+          "text": "Dato de prueba: ¿tu llanta tiene cámara o es tubeless?",
+          "profileKey": "tires",
+          "choices": [
+            {
+              "id": "tube",
+              "label": "Con cámara",
+              "next": "initial",
+              "profileValue": "tube"
+            },
+            {
+              "id": "tubeless",
+              "label": "Tubeless",
+              "next": "initial",
+              "profileValue": "tubeless"
+            },
+            {
+              "id": "unknown",
+              "label": "No sé / ayúdame a identificarlo",
+              "next": "help",
+              "profileValue": "unknown"
+            }
+          ]
+        },
+        {
+          "id": "help",
+          "kind": "step",
+          "text": "SIMULACIÓN: aquí se mostrará la ayuda visual revisada del componente. Esta prueba no identifica una llanta real.",
+          "next": "initial"
+        },
+        {
+          "id": "initial",
+          "kind": "check",
+          "text": "Comprobación simulada: ¿aparece la primera causa?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí, probar el primer paso",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No, revisar la siguiente causa",
+              "next": "alternative"
+            }
+          ]
+        },
+        {
+          "id": "action",
+          "kind": "step",
+          "text": "Paso simulado: marca la casilla para probar el avance. No manipules la bicicleta.",
+          "details": "Contenido exclusivamente de desarrollo. No hay torque, presión, compatibilidad ni procedimiento mecánico asociado.",
+          "next": "worked"
+        },
+        {
+          "id": "worked",
+          "kind": "check",
+          "text": "¿Funcionó el paso simulado?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí, pasar a la prueba final",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No, siguiente posible causa",
+              "next": "alternative"
+            }
+          ]
+        },
+        {
+          "id": "alternative",
+          "kind": "check",
+          "text": "Siguiente causa simulada: elige un resultado para probar la interfaz.",
+          "choices": [
+            {
+              "id": "retry",
+              "label": "Simular otra acción",
+              "next": "second"
+            },
+            {
+              "id": "temporary",
+              "label": "Simular solución temporal",
+              "next": "temporary"
+            },
+            {
+              "id": "unknown",
+              "label": "No se resolvió",
+              "next": "unresolved"
+            }
+          ]
+        },
+        {
+          "id": "second",
+          "kind": "step",
+          "text": "Segunda acción simulada. Marca el paso sin intervenir una bicicleta real.",
+          "next": "final"
+        },
+        {
+          "id": "final",
+          "kind": "finalCheck",
+          "text": "Prueba final simulada: ¿se cumplieron todas las comprobaciones?",
+          "choices": [
+            {
+              "id": "pass",
+              "label": "Simular prueba aprobada",
+              "next": "complete",
+              "verdict": "pass"
+            },
+            {
+              "id": "fail",
+              "label": "Simular prueba fallida",
+              "next": "unresolved",
+              "verdict": "fail"
+            }
+          ]
+        },
+        {
+          "id": "complete",
+          "kind": "outcome",
+          "text": "Resultado simulado. No certifica una reparación ni autoriza circular.",
+          "result": "complete",
+          "restrictions": []
+        },
+        {
+          "id": "temporary",
+          "kind": "outcome",
+          "text": "Resultado temporal simulado. No autoriza utilizar una bicicleta real.",
+          "result": "temporary",
+          "restrictions": [
+            "No circular basándose en esta simulación.",
+            "El contenido mecánico revisado todavía no está disponible."
+          ]
+        },
+        {
+          "id": "stop",
+          "kind": "outcome",
+          "text": "Prueba de bloqueo: una bandera roja impide rebajar el resultado.",
+          "result": "stop",
+          "restrictions": [
+            "No continuar circulando con una bandera roja real."
+          ]
+        },
+        {
+          "id": "unresolved",
+          "kind": "outcome",
+          "text": "Simulación sin solución: la prueba no confirma una reparación.",
+          "result": "unresolved",
+          "restrictions": []
+        },
+        {
+          "id": "context",
+          "kind": "contextBranch",
+          "text": "Selección automática del contexto de prueba",
+          "routes": {
+            "route": "action",
+            "workshop": "workshop_action"
+          }
+        },
+        {
+          "id": "workshop_action",
+          "kind": "step",
+          "text": "Paso simulado en casa o taller. Marca la casilla sin manipular una bicicleta.",
+          "next": "worked"
+        }
+      ],
+      "risk": "low",
+      "estimatedMinutes": null,
+      "safetyFocus": [
+        "structural_damage"
+      ]
+    },
+    {
+      "id": "dev.tire",
+      "title": "[PRUEBA] La llanta pierde aire",
+      "problem": "Simulación de interfaz. No es una guía mecánica. No realices acciones sobre una bicicleta.",
+      "category": "wheels",
+      "terms": [
+        "ponchadura pinchazo neumático se desinfla"
+      ],
+      "bikeTypes": [],
+      "contexts": [
+        "route",
+        "workshop"
+      ],
+      "tools": [
+        "Ninguna: simulación de software"
+      ],
+      "difficulty": "basic",
+      "sourceIds": [],
+      "specificationIds": [],
+      "entry": "safety",
+      "nodes": [
+        {
+          "id": "safety",
+          "kind": "safetyCheck",
+          "text": "SIMULACIÓN: elige una condición para probar el bloqueo de seguridad.",
+          "choices": [
+            {
+              "id": "clear",
+              "label": "En esta prueba no hay banderas rojas",
+              "next": "identify"
+            },
+            {
+              "id": "structure",
+              "label": "Simular daño estructural",
+              "next": "stop",
+              "hardStop": "structural_damage"
+            },
+            {
+              "id": "braking",
+              "label": "Simular pérdida de frenado",
+              "next": "stop",
+              "hardStop": "braking_loss"
+            },
+            {
+              "id": "steering",
+              "label": "Simular daño de dirección",
+              "next": "stop",
+              "hardStop": "steering_damage"
+            },
+            {
+              "id": "critical",
+              "label": "Simular pieza crítica rota",
+              "next": "stop",
+              "hardStop": "critical_part_broken"
+            }
+          ]
+        },
+        {
+          "id": "identify",
+          "kind": "identify",
+          "text": "Dato de prueba: ¿tu llanta tiene cámara o es tubeless?",
+          "profileKey": "tires",
+          "choices": [
+            {
+              "id": "tube",
+              "label": "Con cámara",
+              "next": "initial",
+              "profileValue": "tube"
+            },
+            {
+              "id": "tubeless",
+              "label": "Tubeless",
+              "next": "initial",
+              "profileValue": "tubeless"
+            },
+            {
+              "id": "unknown",
+              "label": "No sé / ayúdame a identificarlo",
+              "next": "help",
+              "profileValue": "unknown"
+            }
+          ]
+        },
+        {
+          "id": "help",
+          "kind": "step",
+          "text": "SIMULACIÓN: aquí se mostrará la ayuda visual revisada del componente. Esta prueba no identifica una llanta real.",
+          "next": "initial"
+        },
+        {
+          "id": "initial",
+          "kind": "check",
+          "text": "Comprobación simulada: ¿aparece la primera causa?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí, probar el primer paso",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No, revisar la siguiente causa",
+              "next": "alternative"
+            }
+          ]
+        },
+        {
+          "id": "action",
+          "kind": "step",
+          "text": "Paso simulado: marca la casilla para probar el avance. No manipules la bicicleta.",
+          "details": "Contenido exclusivamente de desarrollo. No hay torque, presión, compatibilidad ni procedimiento mecánico asociado.",
+          "next": "worked"
+        },
+        {
+          "id": "worked",
+          "kind": "check",
+          "text": "¿Funcionó el paso simulado?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí, pasar a la prueba final",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No, siguiente posible causa",
+              "next": "alternative"
+            }
+          ]
+        },
+        {
+          "id": "alternative",
+          "kind": "check",
+          "text": "Siguiente causa simulada: elige un resultado para probar la interfaz.",
+          "choices": [
+            {
+              "id": "retry",
+              "label": "Simular otra acción",
+              "next": "second"
+            },
+            {
+              "id": "temporary",
+              "label": "Simular solución temporal",
+              "next": "temporary"
+            },
+            {
+              "id": "unknown",
+              "label": "No se resolvió",
+              "next": "unresolved"
+            }
+          ]
+        },
+        {
+          "id": "second",
+          "kind": "step",
+          "text": "Segunda acción simulada. Marca el paso sin intervenir una bicicleta real.",
+          "next": "final"
+        },
+        {
+          "id": "final",
+          "kind": "finalCheck",
+          "text": "Prueba final simulada: ¿se cumplieron todas las comprobaciones?",
+          "choices": [
+            {
+              "id": "pass",
+              "label": "Simular prueba aprobada",
+              "next": "complete",
+              "verdict": "pass"
+            },
+            {
+              "id": "fail",
+              "label": "Simular prueba fallida",
+              "next": "unresolved",
+              "verdict": "fail"
+            }
+          ]
+        },
+        {
+          "id": "complete",
+          "kind": "outcome",
+          "text": "Resultado simulado. No certifica una reparación ni autoriza circular.",
+          "result": "complete",
+          "restrictions": []
+        },
+        {
+          "id": "temporary",
+          "kind": "outcome",
+          "text": "Resultado temporal simulado. No autoriza utilizar una bicicleta real.",
+          "result": "temporary",
+          "restrictions": [
+            "No circular basándose en esta simulación.",
+            "El contenido mecánico revisado todavía no está disponible."
+          ]
+        },
+        {
+          "id": "stop",
+          "kind": "outcome",
+          "text": "Prueba de bloqueo: una bandera roja impide rebajar el resultado.",
+          "result": "stop",
+          "restrictions": [
+            "No continuar circulando con una bandera roja real."
+          ]
+        },
+        {
+          "id": "unresolved",
+          "kind": "outcome",
+          "text": "Simulación sin solución: la prueba no confirma una reparación.",
+          "result": "unresolved",
+          "restrictions": []
+        },
+        {
+          "id": "context",
+          "kind": "contextBranch",
+          "text": "Selección automática del contexto de prueba",
+          "routes": {
+            "route": "action",
+            "workshop": "workshop_action"
+          }
+        },
+        {
+          "id": "workshop_action",
+          "kind": "step",
+          "text": "Paso simulado en casa o taller. Marca la casilla sin manipular una bicicleta.",
+          "next": "worked"
+        }
+      ],
+      "risk": "low",
+      "estimatedMinutes": null,
+      "safetyFocus": [
+        "structural_damage"
+      ]
+    },
+    {
+      "id": "dev.brake",
+      "title": "[PRUEBA] El freno está flojo",
+      "problem": "Simulación de interfaz. No es una guía mecánica. No realices acciones sobre una bicicleta.",
+      "category": "brakes",
+      "terms": [
+        "cable suelto freno no aprieta maneta"
+      ],
+      "bikeTypes": [],
+      "contexts": [
+        "route",
+        "workshop"
+      ],
+      "tools": [
+        "Ninguna: simulación de software"
+      ],
+      "difficulty": "basic",
+      "sourceIds": [],
+      "specificationIds": [],
+      "entry": "safety",
+      "nodes": [
+        {
+          "id": "safety",
+          "kind": "safetyCheck",
+          "text": "SIMULACIÓN: elige una condición para probar el bloqueo de seguridad.",
+          "choices": [
+            {
+              "id": "clear",
+              "label": "En esta prueba no hay banderas rojas",
+              "next": "identify"
+            },
+            {
+              "id": "structure",
+              "label": "Simular daño estructural",
+              "next": "stop",
+              "hardStop": "structural_damage"
+            },
+            {
+              "id": "braking",
+              "label": "Simular pérdida de frenado",
+              "next": "stop",
+              "hardStop": "braking_loss"
+            },
+            {
+              "id": "steering",
+              "label": "Simular daño de dirección",
+              "next": "stop",
+              "hardStop": "steering_damage"
+            },
+            {
+              "id": "critical",
+              "label": "Simular pieza crítica rota",
+              "next": "stop",
+              "hardStop": "critical_part_broken"
+            }
+          ]
+        },
+        {
+          "id": "identify",
+          "kind": "identify",
+          "text": "Dato de prueba: ¿tu llanta tiene cámara o es tubeless?",
+          "profileKey": "tires",
+          "choices": [
+            {
+              "id": "tube",
+              "label": "Con cámara",
+              "next": "initial",
+              "profileValue": "tube"
+            },
+            {
+              "id": "tubeless",
+              "label": "Tubeless",
+              "next": "initial",
+              "profileValue": "tubeless"
+            },
+            {
+              "id": "unknown",
+              "label": "No sé / ayúdame a identificarlo",
+              "next": "help",
+              "profileValue": "unknown"
+            }
+          ]
+        },
+        {
+          "id": "help",
+          "kind": "step",
+          "text": "SIMULACIÓN: aquí se mostrará la ayuda visual revisada del componente. Esta prueba no identifica una llanta real.",
+          "next": "initial"
+        },
+        {
+          "id": "initial",
+          "kind": "check",
+          "text": "Comprobación simulada: ¿aparece la primera causa?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí, probar el primer paso",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No, revisar la siguiente causa",
+              "next": "alternative"
+            }
+          ]
+        },
+        {
+          "id": "action",
+          "kind": "step",
+          "text": "Paso simulado: marca la casilla para probar el avance. No manipules la bicicleta.",
+          "details": "Contenido exclusivamente de desarrollo. No hay torque, presión, compatibilidad ni procedimiento mecánico asociado.",
+          "next": "worked"
+        },
+        {
+          "id": "worked",
+          "kind": "check",
+          "text": "¿Funcionó el paso simulado?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí, pasar a la prueba final",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No, siguiente posible causa",
+              "next": "alternative"
+            }
+          ]
+        },
+        {
+          "id": "alternative",
+          "kind": "check",
+          "text": "Siguiente causa simulada: elige un resultado para probar la interfaz.",
+          "choices": [
+            {
+              "id": "retry",
+              "label": "Simular otra acción",
+              "next": "second"
+            },
+            {
+              "id": "temporary",
+              "label": "Simular solución temporal",
+              "next": "temporary"
+            },
+            {
+              "id": "unknown",
+              "label": "No se resolvió",
+              "next": "unresolved"
+            }
+          ]
+        },
+        {
+          "id": "second",
+          "kind": "step",
+          "text": "Segunda acción simulada. Marca el paso sin intervenir una bicicleta real.",
+          "next": "final"
+        },
+        {
+          "id": "final",
+          "kind": "finalCheck",
+          "text": "Prueba final simulada: ¿se cumplieron todas las comprobaciones?",
+          "choices": [
+            {
+              "id": "pass",
+              "label": "Simular prueba aprobada",
+              "next": "complete",
+              "verdict": "pass"
+            },
+            {
+              "id": "fail",
+              "label": "Simular prueba fallida",
+              "next": "unresolved",
+              "verdict": "fail"
+            }
+          ]
+        },
+        {
+          "id": "complete",
+          "kind": "outcome",
+          "text": "Resultado simulado. No certifica una reparación ni autoriza circular.",
+          "result": "complete",
+          "restrictions": []
+        },
+        {
+          "id": "temporary",
+          "kind": "outcome",
+          "text": "Resultado temporal simulado. No autoriza utilizar una bicicleta real.",
+          "result": "temporary",
+          "restrictions": [
+            "No circular basándose en esta simulación.",
+            "El contenido mecánico revisado todavía no está disponible."
+          ]
+        },
+        {
+          "id": "stop",
+          "kind": "outcome",
+          "text": "Prueba de bloqueo: una bandera roja impide rebajar el resultado.",
+          "result": "stop",
+          "restrictions": [
+            "No continuar circulando con una bandera roja real."
+          ]
+        },
+        {
+          "id": "unresolved",
+          "kind": "outcome",
+          "text": "Simulación sin solución: la prueba no confirma una reparación.",
+          "result": "unresolved",
+          "restrictions": []
+        },
+        {
+          "id": "context",
+          "kind": "contextBranch",
+          "text": "Selección automática del contexto de prueba",
+          "routes": {
+            "route": "action",
+            "workshop": "workshop_action"
+          }
+        },
+        {
+          "id": "workshop_action",
+          "kind": "step",
+          "text": "Paso simulado en casa o taller. Marca la casilla sin manipular una bicicleta.",
+          "next": "worked"
+        }
+      ],
+      "risk": "low",
+      "estimatedMinutes": null,
+      "safetyFocus": [
+        "braking_loss"
+      ]
+    },
+    {
+      "id": "dev.wheel",
+      "title": "[PRUEBA] La rueda está chueca",
+      "problem": "Simulación de interfaz. No es una guía mecánica. No realices acciones sobre una bicicleta.",
+      "category": "wheels",
+      "terms": [
+        "rueda descentrada rin"
+      ],
+      "bikeTypes": [],
+      "contexts": [
+        "route",
+        "workshop"
+      ],
+      "tools": [
+        "Ninguna: simulación de software"
+      ],
+      "difficulty": "basic",
+      "sourceIds": [],
+      "specificationIds": [],
+      "entry": "safety",
+      "nodes": [
+        {
+          "id": "safety",
+          "kind": "safetyCheck",
+          "text": "SIMULACIÓN: elige una condición para probar el bloqueo de seguridad.",
+          "choices": [
+            {
+              "id": "clear",
+              "label": "En esta prueba no hay banderas rojas",
+              "next": "identify"
+            },
+            {
+              "id": "structure",
+              "label": "Simular daño estructural",
+              "next": "stop",
+              "hardStop": "structural_damage"
+            },
+            {
+              "id": "braking",
+              "label": "Simular pérdida de frenado",
+              "next": "stop",
+              "hardStop": "braking_loss"
+            },
+            {
+              "id": "steering",
+              "label": "Simular daño de dirección",
+              "next": "stop",
+              "hardStop": "steering_damage"
+            },
+            {
+              "id": "critical",
+              "label": "Simular pieza crítica rota",
+              "next": "stop",
+              "hardStop": "critical_part_broken"
+            }
+          ]
+        },
+        {
+          "id": "identify",
+          "kind": "identify",
+          "text": "Dato de prueba: ¿tu llanta tiene cámara o es tubeless?",
+          "profileKey": "tires",
+          "choices": [
+            {
+              "id": "tube",
+              "label": "Con cámara",
+              "next": "initial",
+              "profileValue": "tube"
+            },
+            {
+              "id": "tubeless",
+              "label": "Tubeless",
+              "next": "initial",
+              "profileValue": "tubeless"
+            },
+            {
+              "id": "unknown",
+              "label": "No sé / ayúdame a identificarlo",
+              "next": "help",
+              "profileValue": "unknown"
+            }
+          ]
+        },
+        {
+          "id": "help",
+          "kind": "step",
+          "text": "SIMULACIÓN: aquí se mostrará la ayuda visual revisada del componente. Esta prueba no identifica una llanta real.",
+          "next": "initial"
+        },
+        {
+          "id": "initial",
+          "kind": "check",
+          "text": "Comprobación simulada: ¿aparece la primera causa?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí, probar el primer paso",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No, revisar la siguiente causa",
+              "next": "alternative"
+            }
+          ]
+        },
+        {
+          "id": "action",
+          "kind": "step",
+          "text": "Paso simulado: marca la casilla para probar el avance. No manipules la bicicleta.",
+          "details": "Contenido exclusivamente de desarrollo. No hay torque, presión, compatibilidad ni procedimiento mecánico asociado.",
+          "next": "worked"
+        },
+        {
+          "id": "worked",
+          "kind": "check",
+          "text": "¿Funcionó el paso simulado?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí, pasar a la prueba final",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No, siguiente posible causa",
+              "next": "alternative"
+            }
+          ]
+        },
+        {
+          "id": "alternative",
+          "kind": "check",
+          "text": "Siguiente causa simulada: elige un resultado para probar la interfaz.",
+          "choices": [
+            {
+              "id": "retry",
+              "label": "Simular otra acción",
+              "next": "second"
+            },
+            {
+              "id": "temporary",
+              "label": "Simular solución temporal",
+              "next": "temporary"
+            },
+            {
+              "id": "unknown",
+              "label": "No se resolvió",
+              "next": "unresolved"
+            }
+          ]
+        },
+        {
+          "id": "second",
+          "kind": "step",
+          "text": "Segunda acción simulada. Marca el paso sin intervenir una bicicleta real.",
+          "next": "final"
+        },
+        {
+          "id": "final",
+          "kind": "finalCheck",
+          "text": "Prueba final simulada: ¿se cumplieron todas las comprobaciones?",
+          "choices": [
+            {
+              "id": "pass",
+              "label": "Simular prueba aprobada",
+              "next": "complete",
+              "verdict": "pass"
+            },
+            {
+              "id": "fail",
+              "label": "Simular prueba fallida",
+              "next": "unresolved",
+              "verdict": "fail"
+            }
+          ]
+        },
+        {
+          "id": "complete",
+          "kind": "outcome",
+          "text": "Resultado simulado. No certifica una reparación ni autoriza circular.",
+          "result": "complete",
+          "restrictions": []
+        },
+        {
+          "id": "temporary",
+          "kind": "outcome",
+          "text": "Resultado temporal simulado. No autoriza utilizar una bicicleta real.",
+          "result": "temporary",
+          "restrictions": [
+            "No circular basándose en esta simulación.",
+            "El contenido mecánico revisado todavía no está disponible."
+          ]
+        },
+        {
+          "id": "stop",
+          "kind": "outcome",
+          "text": "Prueba de bloqueo: una bandera roja impide rebajar el resultado.",
+          "result": "stop",
+          "restrictions": [
+            "No continuar circulando con una bandera roja real."
+          ]
+        },
+        {
+          "id": "unresolved",
+          "kind": "outcome",
+          "text": "Simulación sin solución: la prueba no confirma una reparación.",
+          "result": "unresolved",
+          "restrictions": []
+        },
+        {
+          "id": "context",
+          "kind": "contextBranch",
+          "text": "Selección automática del contexto de prueba",
+          "routes": {
+            "route": "action",
+            "workshop": "workshop_action"
+          }
+        },
+        {
+          "id": "workshop_action",
+          "kind": "step",
+          "text": "Paso simulado en casa o taller. Marca la casilla sin manipular una bicicleta.",
+          "next": "worked"
+        }
+      ],
+      "risk": "low",
+      "estimatedMinutes": null,
+      "safetyFocus": [
+        "structural_damage"
+      ]
+    }
+  ],
+  "identifications": [
+    {
+      "key": "tires",
+      "storageKey": "tires",
+      "values": {
+        "tube": "Con cámara",
+        "tubeless": "Tubeless",
+        "unknown": "No sé"
+      }
+    },
+    {
+      "key": "brakes",
+      "storageKey": "brakes",
+      "values": {
+        "rim_cable": "De rin con cable",
+        "disc_cable": "Disco mecánico",
+        "hydraulic": "Disco hidráulico",
+        "drum": "Contrapedal / tambor",
+        "unknown": "No sé"
+      }
+    }
+  ]
+}

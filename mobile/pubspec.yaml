@@ -29,5 +29,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/knowledge/manifest.json
-    - assets/knowledge/v1/catalog.json
+    - assets/knowledge/approved/
+    - assets/knowledge/development/
+    - assets/knowledge/pilot/

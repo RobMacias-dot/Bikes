@@ -4,12 +4,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'router.dart';
 import 'theme/app_theme.dart';
 
-class BikeExpertApp extends StatelessWidget {
-  const BikeExpertApp({super.key});
+class BiciFirmeApp extends StatelessWidget {
+  const BiciFirmeApp({super.key});
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-        title: 'Bike Expert', // Confirmar nombre antes de publicar.
+        title: 'BiciFirme',
         theme: AppTheme.light,
         darkTheme: AppTheme.dark,
         themeMode: ThemeMode.system,

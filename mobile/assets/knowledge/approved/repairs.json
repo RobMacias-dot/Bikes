@@ -1,0 +1,33 @@
+{
+  "kind": "repairs",
+  "schemaVersion": 2,
+  "contentVersion": "1.0.0",
+  "status": "approved",
+  "technicalVersion": "1.0.0",
+  "locale": "es-MX",
+  "sources": [],
+  "synonyms": [],
+  "procedures": [],
+  "identifications": [
+    {
+      "key": "tires",
+      "storageKey": "tires",
+      "values": {
+        "tube": "Con cámara",
+        "tubeless": "Tubeless",
+        "unknown": "No sé"
+      }
+    },
+    {
+      "key": "brakes",
+      "storageKey": "brakes",
+      "values": {
+        "rim_cable": "De rin con cable",
+        "disc_cable": "Disco mecánico",
+        "hydraulic": "Disco hidráulico",
+        "drum": "Contrapedal / tambor",
+        "unknown": "No sé"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1720 @@
+{
+  "kind": "repairs",
+  "schemaVersion": 2,
+  "contentVersion": "0.3.1",
+  "status": "development",
+  "technicalVersion": "0.1.0",
+  "locale": "es-MX",
+  "sources": [
+    {
+      "id": "chain",
+      "publisher": "iFixit",
+      "document": "How to Fix a Slipped Bicycle Chain",
+      "url": "https://www.ifixit.com/Guide/How+to+Fix+a+Slipped+Bicycle+Chain/37682",
+      "section": "Steps 2–3 and conclusion only; excludes shortening and joining",
+      "revision": "Página web sin revisión declarada; consulta 2026-09-07",
+      "reviewedAt": "2026-09-07"
+    },
+    {
+      "id": "tube",
+      "publisher": "Park Tool",
+      "document": "Tire and Tube Removal and Installation",
+      "url": "https://www.parktool.com/en-us/blog/repair-help/tire-and-tube-removal-and-installation",
+      "section": "Sections 2–9",
+      "revision": "Página web sin revisión declarada; consulta 2026-09-07",
+      "reviewedAt": "2026-09-07"
+    },
+    {
+      "id": "wheel",
+      "publisher": "Park Tool",
+      "document": "Wheel Removal and Installation",
+      "url": "https://www.parktool.com/en-us/blog/repair-help/wheel-removal-and-installation",
+      "section": "Removal and installation",
+      "revision": "Página web sin revisión declarada; consulta 2026-09-07",
+      "reviewedAt": "2026-09-07"
+    },
+    {
+      "id": "fit",
+      "publisher": "Park Tool",
+      "document": "Tire, Wheel and Inner Tube Fit Standards",
+      "url": "https://www.parktool.com/en-us/blog/repair-help/tire-wheel-and-inner-tube-fit-standards",
+      "section": "Tires and inner tubes",
+      "revision": "Página web sin revisión declarada; consulta 2026-09-07",
+      "reviewedAt": "2026-09-07"
+    },
+    {
+      "id": "pressure",
+      "publisher": "Schwalbe",
+      "document": "Inflation Pressure",
+      "url": "https://www.schwalbe.com/en/technology-faq/tire-pressure/",
+      "section": "What is the right air pressure for my tire?",
+      "revision": "Página web sin revisión declarada; consulta 2026-09-07",
+      "reviewedAt": "2026-09-07"
+    },
+    {
+      "id": "rim",
+      "publisher": "Schwalbe",
+      "document": "Tire Dimensions",
+      "url": "https://www.schwalbetires.com/technology-faq/tire-dimensions/",
+      "section": "Which tire fits which rim? Manufacturer pressure and tire-type instructions",
+      "revision": "Página web sin revisión declarada; consulta 2026-09-07",
+      "reviewedAt": "2026-09-07"
+    },
+    {
+      "id": "index",
+      "publisher": "Park Tool",
+      "document": "Rear Derailleur Adjustment",
+      "url": "https://www.parktool.com/en-us/blog/repair-help/rear-derailleur-adjustment",
+      "section": "Preliminary info and Indexing Adjustment",
+      "revision": "Página web sin revisión declarada; consulta 2026-09-07",
+      "reviewedAt": "2026-09-07"
+    },
+    {
+      "id": "disc",
+      "publisher": "Park Tool",
+      "document": "Hydraulic Disc Brake Alignment",
+      "url": "https://www.parktool.com/en-us/blog/repair-help/hydraulic-disc-brake-alignment",
+      "section": "Diagnosis and Alignment Procedure",
+      "revision": "Página web sin revisión declarada; consulta 2026-09-07",
+      "reviewedAt": "2026-09-07"
+    }
+  ],
+  "synonyms": [
+    [
+      "ponchadura",
+      "pinchazo"
+    ],
+    [
+      "cadena caída",
+      "cadena salida"
+    ]
+  ],
+  "tools": [
+    {
+      "id": "pump",
+      "name": "Bomba con manómetro y conexión para tu válvula"
+    },
+    {
+      "id": "levers",
+      "name": "Desmontables para llanta"
+    },
+    {
+      "id": "axle",
+      "name": "Herramienta para tu eje, si su fabricante la requiere"
+    },
+    {
+      "id": "stand",
+      "name": "Soporte estable que permita girar la rueda sin sujetarla a mano"
+    },
+    {
+      "id": "bits",
+      "name": "Llave y punta exactas para los tornillos de tu pinza"
+    },
+    {
+      "id": "torque",
+      "name": "Torquímetro adecuado al torque del manual de tu montaje"
+    },
+    {
+      "id": "light",
+      "name": "Lámpara para observar la separación"
+    }
+  ],
+  "consumables": [
+    {
+      "id": "tube",
+      "name": "Cámara nueva: medida y válvula verificadas para esta llanta y rin"
+    }
+  ],
+  "identifications": [
+    {
+      "key": "chain",
+      "storageKey": "knowledge.pilot_chain",
+      "values": {
+        "known": "Sin motor, con cambio trasero y plato sin guía ni dientes anchos/estrechos alternados",
+        "other": "Otro sistema",
+        "unknown": "No sé"
+      }
+    },
+    {
+      "key": "tube",
+      "storageKey": "knowledge.pilot_tube",
+      "values": {
+        "known": "Cubierta con cámara confirmada; no tubeless ni tubular",
+        "other": "Otro sistema",
+        "unknown": "No sé"
+      }
+    },
+    {
+      "key": "index",
+      "storageKey": "knowledge.pilot_index",
+      "values": {
+        "known": "Cambio mecánico por cable convencional: al tensar sube a piñones mayores",
+        "other": "Otro sistema",
+        "unknown": "No sé"
+      }
+    },
+    {
+      "key": "disc",
+      "storageKey": "knowledge.pilot_disc",
+      "values": {
+        "known": "Disco hidráulico con tornillos de fijación de pinza identificados",
+        "other": "Otro sistema",
+        "unknown": "No sé"
+      }
+    }
+  ],
+  "procedures": [
+    {
+      "id": "dev.pilot.chain",
+      "title": "[PRUEBA] Cadena salida del plato",
+      "problem": "La cadena cayó del plato; sigue entera y libre.",
+      "category": "drivetrain",
+      "terms": [
+        "cadena salida",
+        "cadena caída",
+        "pedales giran sin avanzar"
+      ],
+      "bikeTypes": [
+        "MTB",
+        "Ruta",
+        "Gravel",
+        "Urbana"
+      ],
+      "contexts": [
+        "route",
+        "workshop"
+      ],
+      "tools": [],
+      "toolIds": [],
+      "consumableIds": [],
+      "difficulty": "basic",
+      "risk": "moderate",
+      "estimatedMinutes": {
+        "min": 5,
+        "max": 15
+      },
+      "safetyFocus": [
+        "structural_damage",
+        "braking_loss",
+        "steering_damage",
+        "critical_part_broken"
+      ],
+      "sourceIds": [
+        "chain"
+      ],
+      "specificationIds": [],
+      "entry": "safety",
+      "nodes": [
+        {
+          "id": "safety",
+          "kind": "safetyCheck",
+          "text": "Antes de intervenir, detente y revisa la bicicleta. Si no puedes evaluar su seguridad, solicita ayuda.",
+          "choices": [
+            {
+              "id": "structural_damage",
+              "label": "Daño estructural visible",
+              "next": "hard_stop",
+              "hardStop": "structural_damage"
+            },
+            {
+              "id": "braking_loss",
+              "label": "Pérdida efectiva de frenado",
+              "next": "hard_stop",
+              "hardStop": "braking_loss"
+            },
+            {
+              "id": "steering_damage",
+              "label": "Dirección dañada",
+              "next": "hard_stop",
+              "hardStop": "steering_damage"
+            },
+            {
+              "id": "critical_part_broken",
+              "label": "Pieza crítica rota",
+              "next": "hard_stop",
+              "hardStop": "critical_part_broken"
+            },
+            {
+              "id": "clear",
+              "label": "No observo estas señales",
+              "next": "identify"
+            }
+          ]
+        },
+        {
+          "id": "identify",
+          "kind": "identify",
+          "profileKey": "chain",
+          "text": "Identifica el sistema. El dato del perfil no sustituye revisar esta bicicleta.",
+          "choices": [
+            {
+              "id": "known",
+              "label": "Sin motor, con cambio trasero y plato sin guía ni dientes anchos/estrechos alternados",
+              "next": "scope",
+              "profileValue": "known"
+            },
+            {
+              "id": "other",
+              "label": "Otro sistema",
+              "next": "stop",
+              "profileValue": "other"
+            },
+            {
+              "id": "unknown",
+              "label": "No sé",
+              "next": "identify_help",
+              "profileValue": "unknown"
+            }
+          ]
+        },
+        {
+          "id": "scope",
+          "kind": "check",
+          "text": "¿La cadena está entera, libre, sin deformaciones y sigue sobre los engranes traseros? Si está atrapada o hay daño, no la fuerces.",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "scope_help"
+            }
+          ]
+        },
+        {
+          "id": "context",
+          "kind": "contextBranch",
+          "text": "Preparar el lugar de trabajo",
+          "routes": {
+            "route": "route",
+            "workshop": "workshop"
+          }
+        },
+        {
+          "id": "route",
+          "kind": "check",
+          "text": "¿Estás fuera del tránsito, en suelo estable, con luz y todos los recursos indicados?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action0"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "workshop",
+          "kind": "check",
+          "text": "¿Tienes espacio estable, buena luz y todos los recursos indicados en casa o taller?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action0"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "action0",
+          "kind": "step",
+          "text": "Con pedales inmóviles y bicicleta estable, mueve suavemente hacia delante el brazo con dos rueditas del cambio trasero (jaula) para dar holgura a la cadena. No fuerces si se resiste.",
+          "next": "free",
+          "visualIds": [
+            "chain_arm"
+          ]
+        },
+        {
+          "id": "free",
+          "kind": "check",
+          "text": "¿Hay holgura suficiente sin forzar?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action1"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "action1",
+          "kind": "step",
+          "text": "Coloca la cadena sobre los dientes del plato. Retira las manos antes de girar lentamente la biela con la rueda trasera levantada.",
+          "next": "action2"
+        },
+        {
+          "id": "action2",
+          "kind": "step",
+          "text": "Comprueba que la cadena está asentada y circula sin engancharse, saltar ni volver a salir.",
+          "next": "worked"
+        },
+        {
+          "id": "worked",
+          "kind": "check",
+          "text": "Al girar a mano, ¿la cadena sigue sobre los dientes, sin saltar ni salirse?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No / necesito revisar otra causa",
+              "next": "next_cause"
+            }
+          ]
+        },
+        {
+          "id": "final",
+          "kind": "finalCheck",
+          "text": "Con frenos y dirección comprobados, en zona despejada prueba pedaleo suave y cambios. ¿La cadena permanece asentada, sin saltos ni nueva salida, y puedes frenar normalmente?",
+          "choices": [
+            {
+              "id": "pass",
+              "label": "Sí, pasó toda la prueba",
+              "next": "complete",
+              "verdict": "pass"
+            },
+            {
+              "id": "fail",
+              "label": "No / no pude probar",
+              "next": "stop",
+              "verdict": "fail"
+            }
+          ]
+        },
+        {
+          "id": "complete",
+          "kind": "outcome",
+          "text": "La comprobación mecánica y la prueba final fueron satisfactorias dentro del alcance del piloto. Si reaparece el síntoma, detente para revisar la causa.",
+          "result": "complete",
+          "restrictions": []
+        },
+        {
+          "id": "stop",
+          "kind": "outcome",
+          "text": "Este piloto no puede confirmar una reparación segura. No continúes circulando; solicita revisión o traslado. No fuerces ajustes ni adivines especificaciones.",
+          "result": "stop",
+          "restrictions": []
+        },
+        {
+          "id": "hard_stop",
+          "kind": "outcome",
+          "text": "Se registró una señal crítica. No circules ni continúes este procedimiento. Solicita traslado y evaluación profesional; esta sesión permanece bloqueada.",
+          "result": "stop",
+          "restrictions": []
+        },
+        {
+          "id": "identify_help",
+          "kind": "check",
+          "text": "Busca el engrane junto a los pedales (plato) y el brazo con dos rueditas bajo los engranes traseros (cambio trasero). Este piloto solo recoloca cadenas enteras y libres, sin motor ni guía de cadena. Los dientes alternadamente anchos y estrechos necesitan una colocación específica: no la adivines. ¿Ahora puedes confirmar el sistema descrito?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "scope"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ],
+          "visualIds": [
+            "chain_arm"
+          ]
+        },
+        {
+          "id": "scope_help",
+          "kind": "check",
+          "text": "Con la bicicleta inmóvil y buena luz, revisa lo indicado sin aflojar piezas. ¿La cadena está entera, libre, sin deformaciones y sigue sobre los engranes traseros? Si está atrapada o hay daño, no la fuerces. Si falta identificar un dato específico, busca la etiqueta o documentación de ese componente. ¿Puedes confirmarlo ahora?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "next_cause",
+          "kind": "check",
+          "text": "La recolocación no resolvió la causa. No pedalees montado. Con todo inmóvil, mira si algún eslabón está torcido, la cadena está atrapada o hay dientes dañados. ¿Está entera y libre, sin daño visible?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "chain_position"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "chain_position",
+          "kind": "check",
+          "text": "Observa desde arriba, sin tocar ajustes: ¿la cadena quedó a un lado de los dientes en vez de apoyada sobre ellos?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "retry_chain"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "chain_manual_check"
+            }
+          ]
+        },
+        {
+          "id": "chain_manual_check",
+          "kind": "check",
+          "text": "Con las manos lejos, gira lentamente las bielas dos vueltas con la rueda trasera levantada. ¿La cadena permanece sobre los dientes, sin engancharse ni saltar?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "retry_chain",
+          "kind": "step",
+          "text": "Repite una vez la colocación: da holgura con el brazo del cambio, apoya la cadena en los dientes y retira las manos antes de girar a mano. No ajustes tornillos del cambio.",
+          "next": "retry_check"
+        },
+        {
+          "id": "retry_check",
+          "kind": "check",
+          "text": "¿Ahora permanece sobre los dientes al girar a mano, sin saltos ni salida?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev.pilot.tube",
+      "title": "[PRUEBA] Ponchadura: cambiar una cámara",
+      "problem": "Llanta pierde aire: sustitución de cámara en cubierta convencional.",
+      "category": "wheels",
+      "terms": [
+        "ponchadura",
+        "llanta pierde aire",
+        "neumático desinflado"
+      ],
+      "bikeTypes": [
+        "MTB",
+        "Ruta",
+        "Gravel",
+        "Urbana"
+      ],
+      "contexts": [
+        "route",
+        "workshop"
+      ],
+      "tools": [],
+      "toolIds": [
+        "pump",
+        "levers",
+        "axle"
+      ],
+      "consumableIds": [
+        "tube"
+      ],
+      "difficulty": "intermediate",
+      "risk": "moderate",
+      "estimatedMinutes": {
+        "min": 20,
+        "max": 45
+      },
+      "safetyFocus": [
+        "structural_damage",
+        "braking_loss",
+        "steering_damage",
+        "critical_part_broken"
+      ],
+      "sourceIds": [
+        "tube",
+        "wheel",
+        "fit",
+        "pressure",
+        "rim"
+      ],
+      "specificationIds": [],
+      "entry": "safety",
+      "nodes": [
+        {
+          "id": "safety",
+          "kind": "safetyCheck",
+          "text": "Antes de intervenir, detente y revisa la bicicleta. Si no puedes evaluar su seguridad, solicita ayuda.",
+          "choices": [
+            {
+              "id": "structural_damage",
+              "label": "Daño estructural visible",
+              "next": "hard_stop",
+              "hardStop": "structural_damage"
+            },
+            {
+              "id": "braking_loss",
+              "label": "Pérdida efectiva de frenado",
+              "next": "hard_stop",
+              "hardStop": "braking_loss"
+            },
+            {
+              "id": "steering_damage",
+              "label": "Dirección dañada",
+              "next": "hard_stop",
+              "hardStop": "steering_damage"
+            },
+            {
+              "id": "critical_part_broken",
+              "label": "Pieza crítica rota",
+              "next": "hard_stop",
+              "hardStop": "critical_part_broken"
+            },
+            {
+              "id": "clear",
+              "label": "No observo estas señales",
+              "next": "identify"
+            }
+          ]
+        },
+        {
+          "id": "identify",
+          "kind": "identify",
+          "profileKey": "tube",
+          "text": "Identifica el sistema. El dato del perfil no sustituye revisar esta bicicleta.",
+          "choices": [
+            {
+              "id": "known",
+              "label": "Cubierta con cámara confirmada; no tubeless ni tubular",
+              "next": "scope",
+              "profileValue": "known"
+            },
+            {
+              "id": "other",
+              "label": "Otro sistema",
+              "next": "stop",
+              "profileValue": "other"
+            },
+            {
+              "id": "unknown",
+              "label": "No sé",
+              "next": "identify_help",
+              "profileValue": "unknown"
+            }
+          ]
+        },
+        {
+          "id": "scope",
+          "kind": "check",
+          "text": "¿Confirmas cámara, repuesto de medida y válvula correctas según sus etiquetas, presión aplicable documentada por fabricantes de llanta/rin y método de desmontaje y montaje de tu rueda conocido? Si falta cualquier dato, detente.",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "scope_help"
+            }
+          ]
+        },
+        {
+          "id": "context",
+          "kind": "contextBranch",
+          "text": "Preparar el lugar de trabajo",
+          "routes": {
+            "route": "route",
+            "workshop": "workshop"
+          }
+        },
+        {
+          "id": "route",
+          "kind": "check",
+          "text": "¿Estás fuera del tránsito, en suelo estable, con luz y todos los recursos indicados?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action0"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "workshop",
+          "kind": "check",
+          "text": "¿Tienes espacio estable, buena luz y todos los recursos indicados en casa o taller?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action0"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "action0",
+          "kind": "step",
+          "text": "Suelta el freno de rin si impide sacar la rueda. En rueda trasera, pasa al engrane pequeño. Abre el cierre o retira el eje según su sistema y saca la rueda sin forzar; si no reconoces ese montaje, consulta su manual antes de soltarlo. No acciones el freno de disco sin rueda. Vacía todo el aire: en válvula fina abre la tuerca de la punta y presiónala; en válvula tipo auto presiona su centro. Si no identificas la válvula, pide ayuda.",
+          "next": "remove_tire"
+        },
+        {
+          "id": "inspect",
+          "kind": "check",
+          "text": "Inspecciona cubierta, talones, rin y cinta. Retira el objeto causante. ¿Todo está íntegro y sin objetos punzantes restantes?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action1"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "action1",
+          "kind": "step",
+          "text": "Monta un borde de la cubierta en el rin respetando la flecha de giro si la hay. Da apenas forma a la cámara con aire, introduce la válvula recta y acomoda la cámara sin torcerla. Mete el segundo borde con las manos por tramos, manteniendo lo ya montado en el canal central. Evita palanquear sobre la cámara. Recorre ambos lados separando un poco la cubierta para ver que la cámara no asome bajo el borde.",
+          "next": "seated"
+        },
+        {
+          "id": "seated",
+          "kind": "check",
+          "text": "¿La cámara está dentro, sin quedar atrapada bajo el talón?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action2"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "reseat"
+            }
+          ]
+        },
+        {
+          "id": "action2",
+          "kind": "step",
+          "text": "Infla gradualmente a la presión documentada para tu combinación, respetando ambos límites. Comprueba asiento uniforme. Reinstala y asegura la rueda conforme a su fabricante; reconecta el freno si corresponde.",
+          "next": "worked"
+        },
+        {
+          "id": "worked",
+          "kind": "check",
+          "text": "¿La rueda quedó asegurada, la línea junto al borde de la cubierta es uniforme en ambos lados y conserva el aire?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No / necesito revisar otra causa",
+              "next": "next_cause"
+            }
+          ]
+        },
+        {
+          "id": "final",
+          "kind": "finalCheck",
+          "text": "Comprueba rueda asegurada, talón uniforme, ausencia de fuga y funcionamiento de ambos frenos. Después de una prueba suave en zona despejada, vuelve a medir. ¿Mantiene la presión elegida sin deformación ni roce?",
+          "choices": [
+            {
+              "id": "pass",
+              "label": "Sí, pasó toda la prueba",
+              "next": "complete",
+              "verdict": "pass"
+            },
+            {
+              "id": "fail",
+              "label": "No / no pude probar",
+              "next": "stop",
+              "verdict": "fail"
+            }
+          ]
+        },
+        {
+          "id": "complete",
+          "kind": "outcome",
+          "text": "La comprobación mecánica y la prueba final fueron satisfactorias dentro del alcance del piloto. Si reaparece el síntoma, detente para revisar la causa.",
+          "result": "complete",
+          "restrictions": []
+        },
+        {
+          "id": "stop",
+          "kind": "outcome",
+          "text": "Este piloto no puede confirmar una reparación segura. No continúes circulando; solicita revisión o traslado. No fuerces ajustes ni adivines especificaciones.",
+          "result": "stop",
+          "restrictions": []
+        },
+        {
+          "id": "hard_stop",
+          "kind": "outcome",
+          "text": "Se registró una señal crítica. No circules ni continúes este procedimiento. Solicita traslado y evaluación profesional; esta sesión permanece bloqueada.",
+          "result": "stop",
+          "restrictions": []
+        },
+        {
+          "id": "identify_help",
+          "kind": "check",
+          "text": "La válvula por sí sola no demuestra que haya cámara. Busca un registro del montaje o confirmación de quien lo hizo. Compara la medida escrita en la cubierta y el rango de la cámara; comprueba también tipo y longitud de válvula. No deduzcas compatibilidad por apariencia. ¿Ahora puedes confirmar el sistema descrito?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "scope"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ],
+          "visualIds": [
+            "tube_bead"
+          ]
+        },
+        {
+          "id": "scope_help",
+          "kind": "check",
+          "text": "Con la bicicleta inmóvil y buena luz, revisa lo indicado sin aflojar piezas. ¿Confirmas cámara, repuesto de medida y válvula correctas según sus etiquetas, presión aplicable documentada por fabricantes de llanta/rin y método de desmontaje y montaje de tu rueda conocido? Si falta cualquier dato, detente. Si falta identificar un dato específico, busca la etiqueta o documentación de ese componente. ¿Puedes confirmarlo ahora?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "remove_tire",
+          "kind": "step",
+          "text": "Aprieta los costados de la cubierta para llevar sus bordes rígidos (talones) al canal central del rin. Mete un desmontable bajo un borde, sin atrapar la cámara; levanta ese borde sobre el rin y avanza poco a poco. Usa solo desmontables, nunca objetos cortantes. Si exige fuerza excesiva, detente y revisa que esté totalmente desinflada.",
+          "next": "extract",
+          "visualIds": [
+            "tube_bead"
+          ]
+        },
+        {
+          "id": "extract",
+          "kind": "step",
+          "text": "Con un costado fuera, extrae la cámara empezando lejos de la válvula; saca la válvula al final. Retira el otro borde de la cubierta para inspeccionar el interior con luz. No pases la mano sobre objetos punzantes.",
+          "next": "inspect"
+        },
+        {
+          "id": "next_cause",
+          "kind": "check",
+          "text": "No circules con pérdida de aire o montaje dudoso. Sin desmontar, comprueba la conexión de la bomba y vuelve a medir. ¿El montaje está uniforme, la rueda firme y mantiene la presión aplicable?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "reseat",
+          "kind": "step",
+          "text": "Vacía el aire. Libera el tramo que atrapa la cámara, acomódala dentro y vuelve a montar el borde con las manos. No infles mientras asome cámara.",
+          "next": "reseat_check"
+        },
+        {
+          "id": "reseat_check",
+          "kind": "check",
+          "text": "¿La cámara está completamente dentro, sin pellizco visible en ambos lados?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action2"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev.pilot.index",
+      "title": "[PRUEBA] Cambios traseros: un clic no cambia bien",
+      "problem": "Ajuste menor de tensión de cable; no corrige límites, desgaste ni piezas dobladas.",
+      "category": "drivetrain",
+      "terms": [
+        "cambio no entra",
+        "cambios lentos",
+        "cadena brinca"
+      ],
+      "bikeTypes": [
+        "MTB",
+        "Ruta",
+        "Gravel",
+        "Urbana"
+      ],
+      "contexts": [
+        "route",
+        "workshop"
+      ],
+      "tools": [],
+      "toolIds": [
+        "stand"
+      ],
+      "consumableIds": [],
+      "difficulty": "intermediate",
+      "risk": "moderate",
+      "estimatedMinutes": {
+        "min": 10,
+        "max": 25
+      },
+      "safetyFocus": [
+        "structural_damage",
+        "braking_loss",
+        "steering_damage",
+        "critical_part_broken"
+      ],
+      "sourceIds": [
+        "index"
+      ],
+      "specificationIds": [],
+      "entry": "safety",
+      "nodes": [
+        {
+          "id": "safety",
+          "kind": "safetyCheck",
+          "text": "Antes de intervenir, detente y revisa la bicicleta. Si no puedes evaluar su seguridad, solicita ayuda.",
+          "choices": [
+            {
+              "id": "structural_damage",
+              "label": "Daño estructural visible",
+              "next": "hard_stop",
+              "hardStop": "structural_damage"
+            },
+            {
+              "id": "braking_loss",
+              "label": "Pérdida efectiva de frenado",
+              "next": "hard_stop",
+              "hardStop": "braking_loss"
+            },
+            {
+              "id": "steering_damage",
+              "label": "Dirección dañada",
+              "next": "hard_stop",
+              "hardStop": "steering_damage"
+            },
+            {
+              "id": "critical_part_broken",
+              "label": "Pieza crítica rota",
+              "next": "hard_stop",
+              "hardStop": "critical_part_broken"
+            },
+            {
+              "id": "clear",
+              "label": "No observo estas señales",
+              "next": "identify"
+            }
+          ]
+        },
+        {
+          "id": "identify",
+          "kind": "identify",
+          "profileKey": "index",
+          "text": "Identifica el sistema. El dato del perfil no sustituye revisar esta bicicleta.",
+          "choices": [
+            {
+              "id": "known",
+              "label": "Cambio mecánico por cable convencional: al tensar sube a piñones mayores",
+              "next": "scope",
+              "profileValue": "known"
+            },
+            {
+              "id": "other",
+              "label": "Otro sistema",
+              "next": "stop",
+              "profileValue": "other"
+            },
+            {
+              "id": "unknown",
+              "label": "No sé",
+              "next": "identify_help",
+              "profileValue": "unknown"
+            }
+          ]
+        },
+        {
+          "id": "scope",
+          "kind": "check",
+          "text": "¿Es un sistema sin motor, sin golpes recientes ni piezas recién cambiadas, y la cadena no salta al hacer fuerza?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "wheel_check"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "scope_help"
+            }
+          ]
+        },
+        {
+          "id": "context",
+          "kind": "contextBranch",
+          "text": "Preparar el lugar de trabajo",
+          "routes": {
+            "route": "route",
+            "workshop": "workshop"
+          }
+        },
+        {
+          "id": "route",
+          "kind": "check",
+          "text": "¿Estás fuera del tránsito, en suelo estable, con luz y todos los recursos indicados?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action0"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "workshop",
+          "kind": "check",
+          "text": "¿Tienes espacio estable, buena luz y todos los recursos indicados en casa o taller?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action0"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "action0",
+          "kind": "step",
+          "text": "Sostén la bicicleta con la rueda trasera libre. En dos platos usa el grande; en tres, el intermedio. Desde el piñón menor, pedalea a mano y manda un clic. Mantén manos lejos de la transmisión.",
+          "next": "direction"
+        },
+        {
+          "id": "direction",
+          "kind": "check",
+          "text": "¿Qué ocurre con ese clic?",
+          "choices": [
+            {
+              "id": "slow",
+              "label": "No sube al siguiente piñón",
+              "next": "action1"
+            },
+            {
+              "id": "over",
+              "label": "Sube dos piñones",
+              "next": "action2"
+            },
+            {
+              "id": "unknown",
+              "label": "Otro resultado / No sé",
+              "next": "next_cause"
+            }
+          ]
+        },
+        {
+          "id": "action1",
+          "kind": "step",
+          "text": "Vuelve al cambio inicial. Desenrosca el tensor una vuelta (antihorario mirando su extremo). Si está próximo a salir o no gira libremente, detente. Repite la prueba una sola vez.",
+          "next": "adjusted"
+        },
+        {
+          "id": "action2",
+          "kind": "step",
+          "text": "Vuelve al cambio inicial. Enrosca el tensor una vuelta (horario mirando su extremo). Si hace tope, detente. Repite la prueba una sola vez.",
+          "next": "adjusted"
+        },
+        {
+          "id": "adjusted",
+          "kind": "check",
+          "text": "¿Pudiste ajustar sin forzar, sin llegar a tope y sin que el tensor quede próximo a salir?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "worked"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "worked",
+          "kind": "check",
+          "text": "Al pedalear a mano, ¿cada clic mueve la cadena al engrane vecino, sin saltos?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No / necesito revisar otra causa",
+              "next": "next_cause"
+            }
+          ]
+        },
+        {
+          "id": "final",
+          "kind": "finalCheck",
+          "text": "Con límites previamente verificados, comprueba todos los cambios en ambos sentidos sin saltos ni ruidos. Luego prueba pedaleo suave y frenado en lugar despejado. ¿Un clic produce un cambio y el síntoma no reaparece?",
+          "choices": [
+            {
+              "id": "pass",
+              "label": "Sí, pasó toda la prueba",
+              "next": "complete",
+              "verdict": "pass"
+            },
+            {
+              "id": "fail",
+              "label": "No / no pude probar",
+              "next": "stop",
+              "verdict": "fail"
+            }
+          ]
+        },
+        {
+          "id": "complete",
+          "kind": "outcome",
+          "text": "La comprobación mecánica y la prueba final fueron satisfactorias dentro del alcance del piloto. Si reaparece el síntoma, detente para revisar la causa.",
+          "result": "complete",
+          "restrictions": []
+        },
+        {
+          "id": "stop",
+          "kind": "outcome",
+          "text": "Este piloto no puede confirmar una reparación segura. No continúes circulando; solicita revisión o traslado. No fuerces ajustes ni adivines especificaciones.",
+          "result": "stop",
+          "restrictions": []
+        },
+        {
+          "id": "hard_stop",
+          "kind": "outcome",
+          "text": "Se registró una señal crítica. No circules ni continúes este procedimiento. Solicita traslado y evaluación profesional; esta sesión permanece bloqueada.",
+          "result": "stop",
+          "restrictions": []
+        },
+        {
+          "id": "identify_help",
+          "kind": "check",
+          "text": "Busca el cable que llega al cambio trasero y la pieza roscada por donde entra (tensor). Un sistema electrónico no usa ese cable. Si no puedes confirmar cómo responde tu modelo al tensar el cable, consulta su identificación antes de ajustar. ¿Ahora puedes confirmar el sistema descrito?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "scope"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ],
+          "visualIds": [
+            "chain_arm"
+          ]
+        },
+        {
+          "id": "scope_help",
+          "kind": "check",
+          "text": "Con la bicicleta inmóvil y buena luz, revisa lo indicado sin aflojar piezas. ¿Es un sistema sin motor, sin golpes recientes ni piezas recién cambiadas, y la cadena no salta al hacer fuerza? Si falta identificar un dato específico, busca la etiqueta o documentación de ese componente. ¿Puedes confirmarlo ahora?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "wheel_check"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "wheel_check",
+          "kind": "check",
+          "text": "Con la rueda quieta, comprueba que está bien asentada y sujeta. ¿Está firme, sin movimiento lateral?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "cable_check"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "cable_check",
+          "kind": "check",
+          "text": "Mira el cable y su funda: ¿están enteros, sin hilos rotos y con sus extremos asentados?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "hanger_check"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "hanger_check",
+          "kind": "check",
+          "text": "Mira la pieza que une el cambio al cuadro (patilla). ¿No ves deformación y el cambio está lejos de los radios? La vista no certifica su alineación.",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "limits_check"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ],
+          "visualIds": [
+            "chain_arm"
+          ]
+        },
+        {
+          "id": "limits_check",
+          "kind": "check",
+          "text": "¿Los topes que impiden salir de los engranes extremos ya fueron comprobados y no hay fallos en esos extremos? Si no lo sabes, no pruebes allí ni toques tornillos H/L/B.",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "next_cause",
+          "kind": "check",
+          "text": "El tensor no resolvió el cambio. Con todo inmóvil, revisa si una funda salió de su apoyo. ¿Ves un extremo fuera, sin cable roto ni daño?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "housing"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "housing",
+          "kind": "step",
+          "text": "Sin aflojar el cable ni tocar topes, devuelve suavemente la funda a su apoyo si entra sin forzar. Si no entra, termina el ajuste y solicita revisión.",
+          "next": "housing_check"
+        },
+        {
+          "id": "housing_check",
+          "kind": "check",
+          "text": "¿La funda está asentada y un clic mueve la cadena al engrane vecino al girar a mano?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dev.pilot.disc",
+      "title": "[PRUEBA] Freno de disco rozando",
+      "problem": "Centrado inicial de pinza hidráulica; excluye rotor deformado, holguras y pérdida de frenado.",
+      "category": "brakes",
+      "terms": [
+        "disco roza",
+        "freno rozando",
+        "rueda hace ruido"
+      ],
+      "bikeTypes": [
+        "MTB",
+        "Ruta",
+        "Gravel",
+        "Urbana"
+      ],
+      "contexts": [
+        "route",
+        "workshop"
+      ],
+      "tools": [],
+      "toolIds": [
+        "bits",
+        "torque",
+        "light",
+        "stand"
+      ],
+      "consumableIds": [],
+      "difficulty": "intermediate",
+      "risk": "moderate",
+      "estimatedMinutes": {
+        "min": 15,
+        "max": 30
+      },
+      "safetyFocus": [
+        "structural_damage",
+        "braking_loss",
+        "steering_damage",
+        "critical_part_broken"
+      ],
+      "sourceIds": [
+        "disc"
+      ],
+      "specificationIds": [],
+      "entry": "safety",
+      "nodes": [
+        {
+          "id": "safety",
+          "kind": "safetyCheck",
+          "text": "Antes de intervenir, detente y revisa la bicicleta. Si no puedes evaluar su seguridad, solicita ayuda.",
+          "choices": [
+            {
+              "id": "structural_damage",
+              "label": "Daño estructural visible",
+              "next": "hard_stop",
+              "hardStop": "structural_damage"
+            },
+            {
+              "id": "braking_loss",
+              "label": "Pérdida efectiva de frenado",
+              "next": "hard_stop",
+              "hardStop": "braking_loss"
+            },
+            {
+              "id": "steering_damage",
+              "label": "Dirección dañada",
+              "next": "hard_stop",
+              "hardStop": "steering_damage"
+            },
+            {
+              "id": "critical_part_broken",
+              "label": "Pieza crítica rota",
+              "next": "hard_stop",
+              "hardStop": "critical_part_broken"
+            },
+            {
+              "id": "clear",
+              "label": "No observo estas señales",
+              "next": "identify"
+            }
+          ]
+        },
+        {
+          "id": "identify",
+          "kind": "identify",
+          "profileKey": "disc",
+          "text": "Identifica el sistema. El dato del perfil no sustituye revisar esta bicicleta.",
+          "choices": [
+            {
+              "id": "known",
+              "label": "Disco hidráulico con tornillos de fijación de pinza identificados",
+              "next": "scope",
+              "profileValue": "known"
+            },
+            {
+              "id": "other",
+              "label": "Otro sistema",
+              "next": "stop",
+              "profileValue": "other"
+            },
+            {
+              "id": "unknown",
+              "label": "No sé",
+              "next": "identify_help",
+              "profileValue": "unknown"
+            }
+          ]
+        },
+        {
+          "id": "scope",
+          "kind": "check",
+          "text": "¿Confirmas sistema, rueda bien asentada, sin holgura en rotor/buje, sin deformación visible, sin fuga y frenado normal? ¿Tienes manual exacto con torque y secuencia de fijación, y herramienta adecuada? Este piloto no purga ni endereza discos.",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "scope_help"
+            }
+          ]
+        },
+        {
+          "id": "context",
+          "kind": "contextBranch",
+          "text": "Preparar el lugar de trabajo",
+          "routes": {
+            "route": "route",
+            "workshop": "workshop"
+          }
+        },
+        {
+          "id": "route",
+          "kind": "check",
+          "text": "¿Estás fuera del tránsito, en suelo estable, con luz y todos los recursos indicados?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action0"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "workshop",
+          "kind": "check",
+          "text": "¿Tienes espacio estable, buena luz y todos los recursos indicados en casa o taller?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action0"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "action0",
+          "kind": "step",
+          "text": "Espera a que el freno esté frío. Mantén dedos y herramientas fuera del rotor. Con la rueda parada, afloja solo los tornillos de montaje identificados hasta permitir movimiento lateral de la pinza.",
+          "next": "action1"
+        },
+        {
+          "id": "action1",
+          "kind": "step",
+          "text": "Aprieta la maneta para centrar la pinza. Manteniéndola, asienta los tornillos. Suelta la maneta y fija al torque y secuencia del fabricante de tu montaje; no uses un valor genérico.",
+          "next": "secured"
+        },
+        {
+          "id": "secured",
+          "kind": "check",
+          "text": "¿Los tornillos quedaron fijados exactamente como indica tu manual?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "action2"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "action2",
+          "kind": "step",
+          "text": "Con las manos y herramientas lejos del disco, gira la rueda y mira con luz detrás de la pinza. Observa si el roce es continuo o aparece solo en una parte de la vuelta. Para tocar cualquier pieza, para primero la rueda.",
+          "next": "worked",
+          "visualIds": [
+            "disc_gap"
+          ]
+        },
+        {
+          "id": "worked",
+          "kind": "check",
+          "text": "Con los tornillos asegurados, ¿el disco gira sin tocar las pastillas?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No / necesito revisar otra causa",
+              "next": "next_cause"
+            }
+          ]
+        },
+        {
+          "id": "final",
+          "kind": "finalCheck",
+          "text": "Acciona el freno varias veces; comprueba fijación, rueda libre, ausencia de fuga y tacto normal. Prueba ambos frenos a baja velocidad en zona despejada. ¿Frena normalmente y ya no roza?",
+          "choices": [
+            {
+              "id": "pass",
+              "label": "Sí, pasó toda la prueba",
+              "next": "complete",
+              "verdict": "pass"
+            },
+            {
+              "id": "fail",
+              "label": "No / no pude probar",
+              "next": "stop",
+              "verdict": "fail"
+            }
+          ]
+        },
+        {
+          "id": "complete",
+          "kind": "outcome",
+          "text": "La comprobación mecánica y la prueba final fueron satisfactorias dentro del alcance del piloto. Si reaparece el síntoma, detente para revisar la causa.",
+          "result": "complete",
+          "restrictions": []
+        },
+        {
+          "id": "stop",
+          "kind": "outcome",
+          "text": "Este piloto no puede confirmar una reparación segura. No continúes circulando; solicita revisión o traslado. No fuerces ajustes ni adivines especificaciones.",
+          "result": "stop",
+          "restrictions": []
+        },
+        {
+          "id": "hard_stop",
+          "kind": "outcome",
+          "text": "Se registró una señal crítica. No circules ni continúes este procedimiento. Solicita traslado y evaluación profesional; esta sesión permanece bloqueada.",
+          "result": "stop",
+          "restrictions": []
+        },
+        {
+          "id": "identify_help",
+          "kind": "check",
+          "text": "La pieza que abraza el disco es la pinza. Una manguera hidráulica llega a ella; un cable visible sujeto a una palanca indica freno mecánico. El dibujo muestra la separación disco/pastillas, no identifica tornillos: para aflojarlos necesitas reconocer los de montaje en tu modelo. ¿Ahora puedes confirmar el sistema descrito?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "scope"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ],
+          "visualIds": [
+            "disc_gap"
+          ]
+        },
+        {
+          "id": "scope_help",
+          "kind": "check",
+          "text": "Con la bicicleta inmóvil y buena luz, revisa lo indicado sin aflojar piezas. ¿Confirmas sistema, rueda bien asentada, sin holgura en rotor/buje, sin deformación visible, sin fuga y frenado normal? ¿Tienes manual exacto con torque y secuencia de fijación, y herramienta adecuada? Este piloto no purga ni endereza discos. Si falta identificar un dato específico, busca la etiqueta o documentación de ese componente. ¿Puedes confirmarlo ahora?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "context"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "next_cause",
+          "kind": "check",
+          "text": "El centrado no eliminó el roce. ¿La rueda sigue firme, el freno tiene tacto normal y no hay fuga, disco deformado ni tornillos flojos?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "rub_pattern"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "rub_pattern",
+          "kind": "check",
+          "text": "Observa a distancia mientras gira; detén la rueda antes de intervenir. ¿Cómo roza?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Roza de forma continua; montaje y torque siguen confirmados",
+              "next": "retry_disc"
+            },
+            {
+              "id": "other",
+              "label": "Solo en parte de la vuelta / no puedo distinguirlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "retry_disc",
+          "kind": "step",
+          "text": "Repite el centrado una sola vez con rueda inmóvil: afloja únicamente los tornillos de montaje identificados, aprieta la maneta, asienta los tornillos y termina con torque y secuencia de tu montaje. No abras la pinza ni ajustes con el disco girando.",
+          "next": "retry_secured"
+        },
+        {
+          "id": "retry_secured",
+          "kind": "check",
+          "text": "¿Los tornillos quedaron asegurados según el montaje específico?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "retry_check"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        },
+        {
+          "id": "retry_check",
+          "kind": "check",
+          "text": "¿Ahora gira sin tocar las pastillas y mantiene tacto normal?",
+          "choices": [
+            {
+              "id": "yes",
+              "label": "Sí",
+              "next": "final"
+            },
+            {
+              "id": "no",
+              "label": "No / no puedo comprobarlo",
+              "next": "stop"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

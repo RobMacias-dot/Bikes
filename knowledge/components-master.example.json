@@ -1,0 +1,16 @@
+{
+  "formatVersion": 2,
+  "contentVersion": "1.0.0",
+  "status": "approved",
+  "sheets": {
+    "sources": [],
+    "manufacturers": [],
+    "families": [],
+    "components": [],
+    "specifications": [],
+    "compatibilities": [],
+    "standards": [],
+    "consumables": [],
+    "componentConsumables": []
+  }
+}
