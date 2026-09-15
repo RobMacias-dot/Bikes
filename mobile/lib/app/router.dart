@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../core/constants/app_constants.dart';
 import '../data/providers.dart';
 import '../features/repairs/problems_page.dart';
 import '../features/garage/garage.dart';
@@ -24,21 +25,18 @@ class HomePage extends ConsumerWidget {
     final items = bikes.valueOrNull ?? [];
     final selected = items.where((bike) => bike.id == activeId).firstOrNull;
     return Scaffold(
-        appBar: AppBar(title: const Text('BiciFirme'), actions: [
+        appBar: AppBar(title: const Text(AppConstants.shortName), actions: [
           IconButton(
               tooltip: 'Acerca de',
               onPressed: () => showAboutDialog(
                       context: context,
-                      applicationName: 'BiciFirme',
-                      applicationVersion: '0.1.0',
+                      applicationName: AppConstants.visibleName,
+                      applicationVersion: AppConstants.versionName,
                       children: const [
                         Text('Una app de RobMac'),
                         SizedBox(height: 12),
                         Text(
-                            'Asistente de bicicletas sin conexión. Sin cuentas, anuncios ni telemetría.'),
-                        SizedBox(height: 12),
-                        Text(
-                            'Versión en desarrollo. La migración a reparaciones guiadas todavía está en curso.')
+                            'Asistente de bicicletas sin conexión. Sin cuentas, anuncios ni telemetría.')
                       ]),
               icon: const Icon(Icons.info_outline))
         ]),

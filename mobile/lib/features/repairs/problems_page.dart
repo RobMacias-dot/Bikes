@@ -21,8 +21,10 @@ class ProblemsPage extends ConsumerStatefulWidget {
       {super.key,
       this.useBike = true,
       this.development = false,
-      this.initialQuery = ''});
-  final bool useBike, development;
+      bool developmentToolsEnabled = kDebugMode,
+      this.initialQuery = ''})
+      : developmentToolsEnabled = developmentToolsEnabled && kDebugMode;
+  final bool useBike, development, developmentToolsEnabled;
   final String initialQuery;
   @override
   ConsumerState<ProblemsPage> createState() => _ProblemsPageState();
@@ -138,7 +140,7 @@ class _ProblemsPageState extends ConsumerState<ProblemsPage> {
                       padding: EdgeInsets.symmetric(vertical: 20),
                       child: Text(
                           'Todavía no hay guías de reparación aprobadas en esta versión. Tus bicicletas siguen disponibles sin conexión.')),
-                  if (kDebugMode && !widget.development)
+                  if (widget.developmentToolsEnabled && !widget.development)
                     OutlinedButton.icon(
                         icon: const Icon(Icons.science_outlined),
                         label: const Text('Abrir laboratorio de desarrollo'),

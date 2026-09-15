@@ -14,10 +14,11 @@ Fundamentos y arquitectura de conocimiento implementados; flujo interactivo disp
 - Búsqueda offline con sinónimos, entrada directa, selección breve por síntoma y modo invitado.
 - Reutilización de datos conocidos y actualización opcional de un campo del perfil.
 - Importador editorial XLSX → JSON offline con estándares, consumibles, endpoints tipados y trazabilidad del maestro development.
+- Preparación Android API 36, nombre/iconos/splash definitivos y AAB release de comprobación; la firma de producción sigue pendiente.
 
 El catálogo y diagnóstico heredados fueron retirados de la aplicación. La edición aprobada está vacía. En debug puedes entrar a **Resolver un problema → Abrir laboratorio de desarrollo** para evaluar los cuatro procedimientos mecánicos del [piloto de Fase 3](docs/phase3-pilot.md), todavía editorialmente `development`. No guardan respuestas en bicicletas y no se habilitan en profile/release. Los fixtures sintéticos anteriores se conservan separados para regresión.
 
-Maestro development importado y validado en `knowledge/generated/development/0.1.0/`; fuente intacta en `knowledge/master/`. Pendientes: contenido aprobado y fuentes revisadas para producción, identificación exacta para procedimientos específicos, diagramas, kit, historial, mantenimiento, notificaciones, respaldos y validación física. Las tablas de la Fase 4 están preparadas; no se presentan como funciones terminadas.
+Maestro development importado y validado en `knowledge/generated/development/0.1.0/`; fuente intacta en `knowledge/master/`. Pendientes bloqueantes: evaluación física de los cuatro pilotos, revisión/promoción editorial real, contenido approved, firma release y Play Console. Kit, historial, mantenimiento, notificaciones y respaldos permanecen fuera de V1. Las tablas de la Fase 4 están preparadas; no se presentan como funciones terminadas.
 
 ## Desarrollo
 
@@ -36,7 +37,7 @@ No requiere backend, cuentas ni red para funcionar. El manifiesto principal no s
 
 ## Documentación
 
-- [Diagnóstico y migración](docs/migration-plan.md)
+- [Estado canónico del proyecto](docs/project-review.md)
 - [Arquitectura](docs/architecture.md)
 - [Modelo local y backup pendiente](docs/data-model.md)
 - [Esquemas de conocimiento](docs/knowledge-schemas.md)

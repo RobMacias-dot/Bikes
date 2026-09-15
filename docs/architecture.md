@@ -24,8 +24,8 @@ Inicio muestra bicicleta activa y búsqueda. ProblemsPage permite invitado, bús
 
 El resultado usa texto y color. Las pantallas nuevas admiten desplazamiento; cambiar de nodo reinicia la posición para mostrar la nueva comprobación. No se añadieron animaciones que retrasen el flujo.
 
-## Retirado y pendiente
+## Límites vigentes
 
-Se retiraron de la app DiagnosticScenario, DiagnosticEngine, el flujo/reporte heredados y su catálogo. El prototipo Python permanece fuera de la app como archivo histórico, sin dependencia de ejecución.
+La edición técnica approved y el catálogo de reparaciones approved están vacíos. El maestro técnico 0.1.0 y los cuatro pilotos 0.3.2 permanecen en development. Hay tres ayudas visuales piloto, pero no una biblioteca completa. Continúan pendientes extracción ARB propia, identificación exacta para especificaciones, flujos de vida útil y verificación física/publicación. Validar estructura no confirma exactitud mecánica.
 
-Pendientes: extracción ARB propia (se mantienen delegados Flutter es), contenido aprobado, identificación exacta para especificaciones, ilustraciones, Fase 4 y verificación física/publicación. El catálogo técnico está vacío; validar estructura no confirma exactitud mecánica.
+Consultar el [estado canónico del proyecto](project-review.md) para gates y deuda actuales.

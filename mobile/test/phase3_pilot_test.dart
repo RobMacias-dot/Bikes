@@ -66,6 +66,37 @@ void main() {
     expect(p.consumables.single, startsWith('Cámara nueva'));
     expect(bundle.technical.consumables.containsKey('tube'), isFalse);
   });
+  test('todo piloto que gira una rueda libre declara el apoyo estable', () {
+    final requiringStand = bundle.repairs.procedures.values
+        .where((p) => p.nodes.values.any((n) =>
+            n.text.contains('rueda trasera libre') ||
+            n.text.contains('gira la rueda')))
+        .map((p) => p.id)
+        .toSet();
+    expect(requiringStand, {
+      'dev.pilot.chain',
+      'dev.pilot.index',
+      'dev.pilot.disc',
+    });
+    for (final id in requiringStand) {
+      expect(bundle.repairs.procedures[id]!.toolIds, contains('stand'),
+          reason: '$id gira una rueda y necesita apoyo estable');
+    }
+  });
+  test('cadena comunica apoyo no profesional y salida segura antes de actuar',
+      () {
+    final chain = bundle.repairs.procedures['dev.pilot.chain']!;
+    expect(chain.toolIds, ['stand']);
+    expect(chain.tools.single, contains('no tiene que ser un caballete'));
+    for (final id in ['route', 'workshop']) {
+      final node = chain.nodes[id]!;
+      expect(node.text, contains('rueda trasera libre'));
+      expect(node.text, contains('No improvises una posición inestable'));
+      expect(node.choices.singleWhere((c) => c.id == 'no').next, 'stop');
+    }
+    expect(chain.nodes['action1']!.text,
+        contains('Si no puedes mantener esa posición de forma estable'));
+  });
   for (final field in ['toolIds', 'consumableIds']) {
     for (final value in [
       ['missing'],

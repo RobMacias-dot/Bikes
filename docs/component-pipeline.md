@@ -50,7 +50,7 @@ Los conteos declarados por README se comprueban y las pruebas fijan los conteos 
 
 El catálogo generado es consumible por `TechnicalCatalog.parse(..., allowDevelopment: true)`; hay prueba de integración con el contrato de reparaciones fijando `technicalVersion: 0.1.0`. La app solo carga JSON. El XLSX, Python y el maestro generado de revisión no se empaquetan como assets.
 
-El laboratorio runtime sigue usando su edición sintética independiente 1.0.0. La edición approved permanece vacía. Una incorporación posterior de catálogo y procedimientos deberá actualizar JSON, dependencia técnica y manifiesto como un paquete coherente; nunca interpretar el artefacto development como aprobado.
+El laboratorio runtime carga los cuatro pilotos 0.3.2 con una copia semánticamente idéntica del catálogo técnico development 0.1.0. Los fixtures sintéticos permanecen separados para regresión y la edición approved sigue vacía. Una incorporación posterior deberá actualizar JSON, dependencia técnica y manifiesto como un paquete coherente; nunca interpretar un artefacto development como aprobado.
 
 ## Pruebas
 
@@ -63,6 +63,7 @@ flutter test --no-pub
 flutter analyze --no-pub
 dart run tool/validate_knowledge.dart assets/knowledge/approved
 dart run tool/validate_knowledge.dart assets/knowledge/development --development
+dart run tool/validate_knowledge.dart assets/knowledge/pilot --development
 ```
 
 Las pruebas leen el maestro real, comparan el catálogo generado y modifican copias en memoria/temporales para comprobar rechazos. No requieren red ni alteran la fuente editorial.

@@ -10,12 +10,15 @@ final repairKnowledgeProvider = FutureProvider.family<KnowledgeBundle, bool>(
         RepairKnowledgeRepository().load(development: development));
 
 class RepairKnowledgeRepository {
-  RepairKnowledgeRepository({AssetBundle? assets})
-      : _assets = assets ?? rootBundle;
+  RepairKnowledgeRepository(
+      {AssetBundle? assets, bool developmentToolsEnabled = kDebugMode})
+      : _assets = assets ?? rootBundle,
+        _developmentToolsEnabled = developmentToolsEnabled && kDebugMode;
   final AssetBundle _assets;
+  final bool _developmentToolsEnabled;
   Future<KnowledgeBundle> load({bool development = false}) async {
     // Runtime policy cannot be enabled by a route, imported JSON or dart-define.
-    if (development && !kDebugMode) {
+    if (development && !_developmentToolsEnabled) {
       throw KnowledgeError(
           'knowledge', 'laboratorio deshabilitado fuera de debug');
     }
@@ -27,6 +30,6 @@ class RepairKnowledgeRepository {
     final data = await Future.wait(
         [read('manifest'), read('components'), read('repairs')]);
     return KnowledgeBundle.parse(data[0], data[1], data[2],
-        allowDevelopment: development && kDebugMode);
+        allowDevelopment: development && _developmentToolsEnabled);
   }
 }

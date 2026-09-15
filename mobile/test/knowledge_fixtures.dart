@@ -9,6 +9,10 @@ Map<String, dynamic> fixtureJson(String file,
 KnowledgeBundle fixtureBundle() => KnowledgeBundle.parse(
     fixtureJson('manifest'), fixtureJson('components'), fixtureJson('repairs'),
     allowDevelopment: true);
+KnowledgeBundle approvedBundle() => KnowledgeBundle.parse(
+    fixtureJson('manifest', edition: 'approved'),
+    fixtureJson('components', edition: 'approved'),
+    fixtureJson('repairs', edition: 'approved'));
 Map<String, dynamic> firstProcedure(Map<String, dynamic> json) =>
     (json['procedures'] as List).first as Map<String, dynamic>;
 Map<String, dynamic> node(Map<String, dynamic> json, String id) =>

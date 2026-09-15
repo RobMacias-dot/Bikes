@@ -1,56 +1,64 @@
-# QA interno RobMac
+# QA de BiciFirme
 
-No existe certificación externa. Este documento registra controles internos y pendientes; una casilla pendiente nunca equivale a aprobada.
+Controles vigentes para desarrollo. No existe certificación externa y una prueba automatizada no acredita seguridad mecánica.
 
-| Control | Método | Estado de esta fase |
+## Estado actual
+
+| Área | Evidencia | Estado |
 | --- | --- | --- |
-| Persistencia tras cerrar SQLite | Archivo real, cerrar y reabrir | Test automatizado |
-| Migración 1 a 2 | Fixture de esquema anterior | Test automatizado |
-| Integridad referencial | Referencia inexistente rechazada | Test automatizado |
-| Hard stops | Cada bandera desde inicio, paso, completo, temporal y no resuelto; retroceso y mutación bloqueados | Test automatizado |
-| Catálogos offline | Versiones, IDs, fuentes, referencias y rechazo de fixtures por defecto | Test automatizado |
-| Registro desde Inicio | Widget test con SQLite | Test automatizado |
-| Reparaciones, ramas y temporales | Grafos acíclicos, prueba final, restricciones y contexto | Test automatizado con fixtures |
-| Compatibilidad e intercambio editorial | Par y alcance exactos, desconocido, referencias y transformador | Test automatizado sobre el maestro real development |
-| Kit, historial, mantenimiento y backup | Flujos futuros | Pendiente |
-| Notificaciones denegadas/reinicio | Dispositivo Android | Pendiente |
-| Accesibilidad, lector y texto grande | Dispositivo Android | Pendiente |
-| Funcionamiento en modo avión | Dispositivo Android | Pendiente |
-| Release firmado/AAB | Clave del propietario | Pendiente |
+| Persistencia y migración SQLite | Archivo real, cierre/reapertura y migración 1→2 | Automatizado |
+| Integridad de conocimiento | Versiones, IDs, referencias, estados, ramas, ciclos y fuentes | Automatizado |
+| Maestro 0.1.0 | SHA-256, conteos, transformación y comparación con JSON generado | Automatizado; contenido development |
+| Sesión de reparación | Prueba final, continuidad no crítica, contexto y hard stops irreversibles | Automatizado |
+| Resultados visibles | Solo complete, temporary y stop; unresolved interno sin representación | Automatizado |
+| Pilotos 0.3.2 | Todos los recorridos invitado/activo × ruta/taller | Automatizado; contenido development |
+| Ayudas visuales | Renderizado y capturas de tres diagramas offline | Automatizado y revisión visual de capturas |
+| Evaluación física/mecánica | Protocolo por piloto e inspección independiente | No cerrada |
+| Texto 150%, pantalla 720×1280 y modo oscuro | Emulador Pixel 7, scroll hasta todas las acciones | Verificado; falta lector y dispositivos reales |
+| Funcionamiento sin red | Release en emulador con Wi-Fi y datos desactivados | Arranque, garaje, diagnóstico y reapertura verificados; falta dispositivo real |
+| Kit, historial, mantenimiento, notificaciones y backup | Flujos de producto | No implementados |
+| AAB release | Build R8 sin firma, manifest y tamaño inspeccionados | Compila; firma de producción y Play pendientes |
 
-Ejecutar `flutter analyze --no-pub`, `flutter test --no-pub` y `flutter build apk --debug --no-pub` desde mobile. La compilación no aprueba seguridad mecánica.
+La regresión completa del 14 de septiembre de 2026 aprobó **218 pruebas**. `flutter analyze --no-pub` terminó sin incidencias. Los cuatro pilotos no contienen nodos/aristas unresolved ni resultados temporary. Las pruebas de política fuerzan que el repositorio rechace development y que la pantalla aprobada no ofrezca laboratorio, fixtures ni marcas `[PRUEBA]`. Dos pruebas adicionales verifican que todo piloto que gira una rueda libre declare `stand` y que cadena comunique, antes de actuar, el apoyo no profesional, la estabilidad y la salida segura.
 
-## Validación física pendiente
+Se instaló limpiamente en un emulador Pixel 7 un APK compilado en modo release y firmado solo con la clave debug estándar para QA local. Con Wi-Fi y datos desactivados arrancó en frío, abrió garaje y diagnóstico, no mostró laboratorio y conservó una bicicleta tras `force-stop` y reapertura. También se comprobó modo oscuro, texto 150% y 720×1280 sin overflow; el inicio conservó desplazamiento hasta todas las acciones. Esta prueba no convierte la firma debug de QA en firma distribuible ni sustituye la matriz de dispositivos físicos, TalkBack o evaluación mecánica.
 
-Realizar las pruebas con bicicleta inmóvil y entorno controlado. No provocar grietas, roturas de freno, daño estructural ni fallos de dirección. Escenarios sugeridos: cadena salida sin daño, cámara previamente pinchada desmontada, localización de pérdida de aire, inspección de roce existente, cambio desajustado en soporte y revisión de un accesorio no crítico flojo. Frenos/dirección requieren supervisión competente; no circular para reproducir un fallo peligroso.
+## Comandos de desarrollo
 
-| Fecha / responsable | Escenario / guía y versión | Bicicleta / componentes | Pasos | Esperado | Real | Aprobado / rechazado | Observaciones |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Pendiente | | | | | | | |
+Desde `mobile/`:
 
-Antes de publicar: cerrar defectos críticos, verificar fuentes de datos críticos, completar cobertura funcional por categoría y registrar pruebas finales de las guías principales.
+```powershell
+flutter analyze --no-pub
+flutter test --no-pub --reporter expanded
+dart run tool/validate_knowledge.dart assets/knowledge/approved
+dart run tool/validate_knowledge.dart assets/knowledge/development --development
+dart run tool/validate_knowledge.dart assets/knowledge/pilot --development
+```
 
-## Registro de Fase 1 — 2026-09-05
+Desde la raíz, para el lector del maestro:
 
-Flutter 3.47.2 / Dart 3.13.2. Análisis estático sin incidencias y 10 pruebas automatizadas aprobadas. Se generó APK debug de desarrollo. No se ejecutaron pruebas físicas, validación en teléfono ni AAB firmado. La inspección de diff no reportó errores de espacios.
+```powershell
+python -m unittest discover -s tools -p test_xlsx_master.py -v
+```
 
+Definir `BICIFIRME_PYTHON` para las pruebas Flutter del importador si Python no está en PATH. La compilación debug/release verifica integración del binario, pero no aprueba contenido, mecánica ni distribución.
 
-## Registro de Fase 2 / base de Fase 3 — 2026-09-05
+## Criterios que deben permanecer cubiertos
 
-Análisis estático sin incidencias y **93 pruebas aprobadas**. Incluyen validación estricta de los dos esquemas, referencias, ciclos y rutas, tipos de resultado, prueba final, hard stops desde todos los estados de resultado, ramas ruta/taller, filtros de bicicleta/contexto, búsqueda por sinónimos, actualización progresiva sin perder otros datos e interacción de invitado desde búsqueda hasta bloqueo rojo.
+- La edición approved no acepta IDs o contenido development ni hace fallback a fixtures.
+- Complete solo es alcanzable después de una prueba final aprobada.
+- Temporary requiere una solución provisional real y restricciones; no sustituye «no resuelto».
+- Un fallo no crítico puede abrir otra causa segura dentro del mismo procedimiento.
+- Cada hard stop domina resultados anteriores y bloquea avance y retroceso.
+- Ruta y taller con las mismas respuestas mecánicas producen el mismo resultado.
+- Ausencia de compatibilidad devuelve unknown; no existe transitividad ni expansión por familia.
+- El importador no modifica el maestro, no inventa unidades, alcances o valores y rechaza promoción silenciosa.
+- Los diagramas son offline, originales, opcionales y mantienen alternativa textual.
 
-Se verificaron las herramientas CLI sobre el catálogo aprobado vacío, los fixtures con habilitación explícita y el transformador desde el ejemplo de hojas normalizadas. El transformador generó un archivo de revisión en build; no alteró los assets.
+## Validación física
 
-Los fixtures son datos de desarrollo y no prueban reparaciones reales. Continúan pendientes las pruebas físicas, el catálogo técnico real, la revisión editorial, pruebas en un teléfono y un AAB de publicación firmado.
+Usar el [protocolo de Fase 3](phase3-physical-evaluation.md) y una [plantilla por sesión](phase3-physical-results-template.md). Mantener separados el resultado mostrado, el resultado mecánico del inspector y la ayuda recibida. No cerrar Fase 3 mientras algún piloto carezca de evidencia suficiente o tenga bloqueantes abiertos.
 
-Compilación de esta entrega: APK debug y APK release generados correctamente. Release emitió advertencias no bloqueantes sobre fuente Cupertino no incluida y opciones Java 8 en dependencias; MaterialIcons se empaquetó. No se verificó un AAB firmado ni se ejecutó la app en un teléfono. Estas compilaciones no habilitan contenido de desarrollo fuera de debug y no equivalen a aprobación de publicación.
+La instalación para este gate debe ser un APK **debug** limpio en un teléfono Android físico, mediante el procedimiento exacto del protocolo. El laboratorio no se abre en release y no se debilita `kDebugMode`. Un emulador puede apoyar regresión de software, pero nunca cuenta como evidencia mecánica ni como ejecución autónoma física.
 
-## Endurecimiento del maestro — 2026-09-06
-
-Contrato runtime 2, maestro editorial 1 / contenido 0.1.0 development. **148 pruebas Flutter/Dart y 8 pruebas Python aprobadas**. El test de integración lee el XLSX real, verifica SHA-256 y conteos (59/11/21/61/52/409/20/11, más 8 relaciones de consumibles) y compara exactamente el JSON generado versionado. Se prueban duplicados en todas las colecciones, referencias, endpoints ambiguos/de tipo incorrecto, versiones, columnas, critical, unidades, nulos y promoción prohibida a approved. El lector rechaza fórmulas y errores de Excel sobre copias temporales.
-
-Las pruebas de motor comprueban vocabulario nuevo de identify con persistencia y reutilización, invitado, riesgo/tiempo, ausencia de transitividad y de expansión por familia, tres resultados visibles y rechazo de degradación de cada bandera roja a complete/temporary/unresolved incluso sin safetyFocus. Permanecen las pruebas de irreversibilidad desde resultados anteriores y de prueba final obligatoria.
-
-El maestro se conserva intacto fuera de assets. Todas las columnas tienen representación; la restricción Comp ErgoMax/C260 permanece como nota editorial hasta contar con una fila explícita en COMPATIBILITIES. No se crearon proxies ni se completaron especificaciones vacías.
-
-Verificación final: `flutter analyze --no-pub` sin incidencias, validadores de ambos paquetes correctos y APK debug/release generados con el código final. Inspección del APK release: no contiene XLSX, Python ni directorios master/generated; el catálogo approved sigue vacío. Release conserva el aviso no bloqueante de fuente Cupertino ausente observado anteriormente. No se realizaron pruebas físicas ni se generó AAB de publicación. `git diff --check` sin errores; no se realizó commit ni push.
+El estado de gates y deudas se mantiene en [project-review.md](project-review.md).

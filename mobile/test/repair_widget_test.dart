@@ -81,7 +81,11 @@ void main() {
     final db = LocalDatabase(NativeDatabase.memory());
     addTearDown(db.close);
     await tester.pumpWidget(ProviderScope(
-        overrides: [databaseProvider.overrideWithValue(db)],
+        overrides: [
+          databaseProvider.overrideWithValue(db),
+          repairKnowledgeProvider(false)
+              .overrideWith((ref) async => approvedBundle())
+        ],
         child: const MaterialApp(home: ProblemsPage(useBike: false))));
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(
@@ -92,6 +96,25 @@ void main() {
             .first);
     expect(find.textContaining('Todavía no hay guías'), findsOneWidget);
     expect(find.textContaining('[PRUEBA]'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('la superficie de producción no ofrece el laboratorio',
+      (tester) async {
+    final db = LocalDatabase(NativeDatabase.memory());
+    addTearDown(db.close);
+    await tester.pumpWidget(ProviderScope(
+        overrides: [
+          databaseProvider.overrideWithValue(db),
+          repairKnowledgeProvider(false)
+              .overrideWith((ref) async => approvedBundle())
+        ],
+        child: const MaterialApp(
+            home:
+                ProblemsPage(useBike: false, developmentToolsEnabled: false))));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('LABORATORIO'), findsNothing);
+    expect(find.textContaining('[PRUEBA]'), findsNothing);
+    expect(find.text('Abrir laboratorio de desarrollo'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 }

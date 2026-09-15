@@ -3,12 +3,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:bike_expert/domain/knowledge/repair_session.dart';
 import 'package:bike_expert/domain/knowledge/repair_catalog.dart';
 import 'package:bike_expert/features/repairs/repair_visual.dart';
+import 'package:bike_expert/data/knowledge/repair_knowledge_repository.dart';
 import 'phase3_pilot_test.dart' show pilotBundle, pilotJson;
 import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
 void main() {
+  test('la política de producción rechaza conocimiento development', () async {
+    final repository =
+        RepairKnowledgeRepository(developmentToolsEnabled: false);
+    await expectLater(
+        repository.load(development: true), throwsFormatException);
+  });
+
   test('el producto solo expone complete, temporary y stop', () {
     expect(VisibleRepairOutcome.values.map((value) => value.name),
         ['complete', 'temporary', 'stop']);

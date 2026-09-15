@@ -10,6 +10,8 @@ Copiar esta plantilla para cada sesión según el [protocolo](phase3-physical-ev
 | ID anonimizado del tester | |
 | Experiencia aproximada | Principiante / básica / intermedia / avanzada; breve experiencia relevante: |
 | Procedimiento | dev.pilot.chain / dev.pilot.tube / dev.pilot.index / dev.pilot.disc |
+| Estado del piloto al iniciar | NOT_TESTED / IN_TESTING / FAILED / PASS_PENDING_EDITORIAL / PASS |
+| Estado del piloto al cerrar esta sesión | IN_TESTING / FAILED / PASS_PENDING_EDITORIAL / PASS; justificación y revisor: |
 | Bicicleta | ID anónimo, tipo y modelos de componentes relevantes: |
 | Contexto | Ruta controlada / casa o taller |
 | Modo | Invitado / bicicleta activa; datos de perfil reutilizados: |
@@ -19,7 +21,7 @@ Copiar esta plantilla para cada sesión según el [protocolo](phase3-physical-ev
 | Supervisor / inspector independiente | IDs anónimos; confirmar personas distintas y que el inspector no guio la reparación: |
 | Sesión anterior relacionada | ID del intento anterior o no aplica: |
 | Tipo de sesión | Reparación física / escenario de hard stop sin avería provocada |
-| Condición inicial y síntoma | |
+| Condición inicial y síntoma reproducibles | Condición preexistente, cómo se verificó antes de actuar y evidencia; no fabricar una avería: |
 | Admisión segura y dentro del alcance | Sí / no; comprobaciones del supervisor: |
 | Manuales y recursos disponibles | Documento/modelo/revisión aplicable, herramientas y consumibles: |
 
@@ -42,13 +44,28 @@ Registrar explícitamente «ninguna» si no hubo dudas, errores o ayuda. La expl
 | Ayuda de interfaz requerida | Ninguna / detalle: |
 | Interrupción del supervisor | No / sí; motivo y momento: |
 
+## Hallazgos de contenido, seguridad, ayudas y UX
+
+Registrar «ninguno» cuando se haya observado expresamente el aspecto. No agrupar aquí un resultado mecánico fallido: conservarlo también en la inspección independiente.
+
+| Aspecto | Hallazgo, nodo/momento y evidencia |
+| --- | --- |
+| Error de identificación | |
+| Instrucción que no corresponde a la bicicleta o componente | |
+| Paso confuso o intento de omisión | |
+| Instrucción potencialmente insegura | |
+| Falso complete | |
+| Stop incorrecto o evitable | |
+| Problema de ayuda visual o ausencia de apoyo necesario | |
+| Observación UX o de accesibilidad | |
+
 ## Resultado mostrado y hard stops
 
 | Campo | Registro |
 | --- | --- |
 | Resultado mostrado | complete / temporary / stop / sin resultado por interrupción |
 | Texto visible y nodo terminal | Transcripción o evidencia anonimizada: |
-| Respuesta a «¿funcionó?» y a la prueba final | |
+| Respuesta a la comprobación mecánica previa y a la prueba final | |
 | Coincide entre contextos con las mismas respuestas | Sí / no / no evaluado; referencia a comprobación sin repetir avería física: |
 
 Los cuatro pilotos actuales no ofrecen `temporary`; si aparece, registrar discrepancia, no normalizarla.
@@ -81,13 +98,19 @@ Completar por el inspector sin usar el resultado de la app como prueba. Separar 
 - Bloqueantes observados: ninguno / falso complete / instrucción insegura / hard stop eludible / reparación no verificada. Descripción, evidencia e ID del hallazgo:
 - Seguimiento del bloqueante: pendiente / corrección y reevaluación documentadas; referencias (sin borrar el resultado original):
 
+### Corrección y repetición, si la sesión falló
+
+| Clasificación principal | Defecto y alcance mínimo de la corrección | Regresión de software ejecutada | Repetición física exigida y sesión nueva | Estado del hallazgo |
+| --- | --- | --- | --- | --- |
+| Mecánico/contenido / UX / arquitectura / ayuda visual / prueba mal planteada | | | | Abierto / cerrado con evidencia |
+
 ### Consolidación por piloto (completar al revisar el conjunto de sesiones)
 
 | Piloto | Sesión(es) de éxito mecánico independiente | Sesión(es) de resolución autónoma verificada sin ayuda mecánica | Éxitos asistidos conservados | Bloqueantes y cierre documentado | Dictamen |
 | --- | --- | --- | --- | --- | --- |
-| dev.pilot.chain | | | | | Pendiente |
-| dev.pilot.tube | | | | | Pendiente |
-| dev.pilot.index | | | | | Pendiente |
-| dev.pilot.disc | | | | | Pendiente |
+| dev.pilot.chain | | | | | NOT_TESTED |
+| dev.pilot.tube | | | | | NOT_TESTED |
+| dev.pilot.index | | | | | NOT_TESTED |
+| dev.pilot.disc | | | | | NOT_TESTED |
 
-Dictamen: pendiente / bloqueado / gate de evaluación satisfecho. Exigir ambos mínimos por piloto y ausencia de bloqueantes pendientes conforme al protocolo. No compensar fallos con éxitos de otros pilotos. Registrar responsable de revisión (ID anónimo), fecha y justificación. Este registro no modifica `development` ni aprueba una publicación.
+Estado: `NOT_TESTED` / `IN_TESTING` / `FAILED` / `PASS_PENDING_EDITORIAL` / `PASS`. Exigir ambos mínimos por piloto y ausencia de bloqueantes pendientes conforme al protocolo. No compensar fallos con éxitos de otros pilotos. Registrar responsable de revisión (ID anónimo), fecha y justificación. Este registro no modifica `development`, no promueve contenido y no aprueba una publicación.

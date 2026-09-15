@@ -1,7 +1,7 @@
 {
   "kind": "repairs",
   "schemaVersion": 2,
-  "contentVersion": "0.3.1",
+  "contentVersion": "0.3.2",
   "status": "development",
   "technicalVersion": "0.1.0",
   "locale": "es-MX",
@@ -104,7 +104,7 @@
     },
     {
       "id": "stand",
-      "name": "Soporte estable que permita girar la rueda sin sujetarla a mano"
+      "name": "Apoyo estable que mantenga la bicicleta firme y permita girar la rueda sin sujetarla a mano; no tiene que ser un caballete de taller"
     },
     {
       "id": "bits",
@@ -185,7 +185,9 @@
         "workshop"
       ],
       "tools": [],
-      "toolIds": [],
+      "toolIds": [
+        "stand"
+      ],
       "consumableIds": [],
       "difficulty": "basic",
       "risk": "moderate",
@@ -296,7 +298,7 @@
         {
           "id": "route",
           "kind": "check",
-          "text": "¿Estás fuera del tránsito, en suelo estable, con luz y todos los recursos indicados?",
+          "text": "¿Estás fuera del tránsito, en suelo estable, con luz y con una forma segura de mantener la bicicleta firme y la rueda trasera libre? No improvises una posición inestable.",
           "choices": [
             {
               "id": "yes",
@@ -313,7 +315,7 @@
         {
           "id": "workshop",
           "kind": "check",
-          "text": "¿Tienes espacio estable, buena luz y todos los recursos indicados en casa o taller?",
+          "text": "¿Tienes espacio estable, buena luz y una forma segura de mantener la bicicleta firme y la rueda trasera libre? No improvises una posición inestable.",
           "choices": [
             {
               "id": "yes",
@@ -356,7 +358,7 @@
         {
           "id": "action1",
           "kind": "step",
-          "text": "Coloca la cadena sobre los dientes del plato. Retira las manos antes de girar lentamente la biela con la rueda trasera levantada.",
+          "text": "Con la bicicleta firme y la rueda trasera libre, coloca la cadena sobre los dientes del plato. Retira las manos antes de girar lentamente la biela. Si no puedes mantener esa posición de forma estable, no continúes.",
           "next": "action2"
         },
         {
@@ -496,7 +498,7 @@
         {
           "id": "chain_manual_check",
           "kind": "check",
-          "text": "Con las manos lejos, gira lentamente las bielas dos vueltas con la rueda trasera levantada. ¿La cadena permanece sobre los dientes, sin engancharse ni saltar?",
+          "text": "Con la bicicleta firme, la rueda trasera libre y las manos lejos, gira lentamente las bielas dos vueltas. ¿La cadena permanece sobre los dientes, sin engancharse ni saltar?",
           "choices": [
             {
               "id": "yes",
@@ -513,7 +515,7 @@
         {
           "id": "retry_chain",
           "kind": "step",
-          "text": "Repite una vez la colocación: da holgura con el brazo del cambio, apoya la cadena en los dientes y retira las manos antes de girar a mano. No ajustes tornillos del cambio.",
+          "text": "Con la bicicleta firme y la rueda trasera libre, repite una vez la colocación: da holgura con el brazo del cambio, apoya la cadena en los dientes y retira las manos antes de girar a mano. No ajustes tornillos del cambio.",
           "next": "retry_check"
         },
         {
@@ -1079,7 +1081,7 @@
         {
           "id": "action0",
           "kind": "step",
-          "text": "Sostén la bicicleta con la rueda trasera libre. En dos platos usa el grande; en tres, el intermedio. Desde el piñón menor, pedalea a mano y manda un clic. Mantén manos lejos de la transmisión.",
+          "text": "Con la bicicleta firme sobre el apoyo indicado y la rueda trasera libre, en dos platos usa el grande; en tres, el intermedio. Desde el piñón menor, pedalea a mano y manda un clic. Mantén manos lejos de la transmisión; si el apoyo no es estable, no continúes.",
           "next": "direction"
         },
         {
@@ -1540,7 +1542,7 @@
         {
           "id": "action2",
           "kind": "step",
-          "text": "Con las manos y herramientas lejos del disco, gira la rueda y mira con luz detrás de la pinza. Observa si el roce es continuo o aparece solo en una parte de la vuelta. Para tocar cualquier pieza, para primero la rueda.",
+          "text": "Con la bicicleta firme sobre el apoyo indicado y las manos y herramientas lejos del disco, gira la rueda y mira con luz detrás de la pinza. Observa si el roce es continuo o aparece solo en una parte de la vuelta. Si el apoyo no es estable, no continúes; para tocar cualquier pieza, para primero la rueda.",
           "next": "worked",
           "visualIds": [
             "disc_gap"

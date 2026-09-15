@@ -1,6 +1,6 @@
 # Conocimiento de BiciFirme
 
-Los esquemas separados y su validación están implementados. El catálogo heredado, su cargador y el diagnóstico/reporte antiguos fueron retirados de la aplicación. No existe fallback hacia recomendaciones heredadas cuando falla la validación.
+Los esquemas separados y su validación son la única fuente de conocimiento de la aplicación. Si la validación falla, no existe fallback hacia recomendaciones alternativas.
 
 Consultar [contratos de conocimiento](knowledge-schemas.md), [canalización editorial](component-pipeline.md) y [reglas del motor](repair-engine.md).
 
@@ -11,3 +11,5 @@ Solo un botón de laboratorio en debug carga development. No se habilita en prof
 Los fixtures muestran una advertencia de simulación; el piloto muestra una advertencia editorial específica. Ambos usan IDs dev. y títulos [PRUEBA], y no guardan respuestas en bicicletas. Los tests usan datos sintéticos de especificaciones exclusivamente dentro de `test/`.
 
 La validación estructural no sustituye revisión de fuentes ni validación física de una reparación real. La app todavía no es una V1 publicable.
+
+El estado vigente de fases, gates y deuda está en [project-review.md](project-review.md).

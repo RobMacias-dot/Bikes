@@ -1,5 +1,3 @@
-> Actualización 2026-09-10: ver [revisión de producto 0.3.1](phase3-product-review.md). Prevalece sobre las descripciones anteriores de stop/unresolved, confirmaciones, ayuda visual y límites del piloto.
-
 # Esquemas de conocimiento, versión 2
 
 Los contratos ejecutables están en `mobile/lib/domain/knowledge/`. Catálogo técnico y reparaciones son independientes. Se rechazan campos desconocidos, tipos incorrectos, duplicados y referencias rotas, sin completar datos ausentes por inferencia.
@@ -50,7 +48,7 @@ Extensión aditiva de Fase 3: raíz `repairs.tools` y `repairs.consumables`, col
 | finalCheck | choices | Exactamente pass y fail |
 | outcome | result, restrictions | complete, temporary, stop; unresolved se conserva solo como estado interno del motor |
 
-Todos tienen id, kind y text; details opcional. Choices: id, label, next; hardStop/profileValue/verdict solo cuando corresponden al tipo. El grafo no tiene ciclos ni nodos inalcanzables. Entrada obligatoria safetyCheck.
+Todos tienen id, kind y text; `details` y `visualIds` son opcionales. `visualIds` contiene cero o más IDs del registro offline admitido; se rechazan duplicados, IDs desconocidos y URLs. Choices: id, label, next; hardStop/profileValue/verdict solo cuando corresponden al tipo. El grafo no tiene ciclos ni nodos inalcanzables. Entrada obligatoria safetyCheck.
 
 Banderas irreversibles: structural_damage, braking_loss, steering_damage, critical_part_broken. Cada rama roja conduce a stop. La sesión acumula banderas y bloquea retroceso/avance incluso después de un resultado anterior. safetyFocus y riesgo nunca las rebajan. complete requiere aprobación inmediata de finalCheck; temporal necesita restricciones y fuentes editoriales en approved.
 
